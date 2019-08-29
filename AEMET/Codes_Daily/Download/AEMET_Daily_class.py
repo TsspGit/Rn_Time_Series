@@ -18,14 +18,10 @@ class AEMET_GET:
     def __init__(self, start_date, end_date):
         self.start = str(start_date)
         self.end = str(end_date)
-        print("""\n You are going to Download the data from {} to {} 
-from the stations with IDs:\n""".format(start_date, end_date))
-        for ID in ['0076', '9263D', '9434']:
-            print(ID)
     
-    def connect(self, api_key, where, ID):
+    def connect(self, api_key, where, ID=''):
         if where == 'Data':
-            url = 'https://opendata.aemet.es/opendata/api/valores/climatologicos/diarios/datos/fechaini/{}-01-01T00:00:00UTC/fechafin/{}-01-01T00:00:00UTC/estacion/{}/?api_key={}'.format(self.start, self.end, ID, api_key)
+            url = 'https://opendata.aemet.es/opendata/api/valores/climatologicos/diarios/datos/fechaini/{}-01-01T00:00:00UTC/fechafin/{}-12-31T23:59:59UTC/estacion/{}/?api_key={}'.format(self.start, self.end, ID, api_key)
             api_json = urllib.request.urlopen(url).read().decode()
             js = json.loads(api_json)
             print(api_json)
@@ -83,6 +79,7 @@ from the stations with IDs:\n""".format(start_date, end_date))
         airports_position = DF_st['nombre'].str.contains('AEROPUERTO')
         DF_airst = DF_st[airports_position]
         def Final_DF(airports=None):
+            # inputs a list with the names of the airport's cities
             i = 0
             output = {}
             for elem in airports:
@@ -90,6 +87,16 @@ from the stations with IDs:\n""".format(start_date, end_date))
                 pos = DF_airst['nombre'].str.contains(elem)
                 DF_final = DF_airst[pos]
                 output['station' + str(i)] =  DF_final
-            return pd.concat([output['station1'], output['station2'], output['station3']])
-        DF_airports = Final_DF(['BARCELONA', 'PAMPLONA', 'ZARAGOZA'])
+            return output
+        DF_airports_dic = Final_DF(airports)
+        def concat_dictionary(DIC):
+            # Inputs a dictionary with the dataframes
+            keys_list = [key for key in DIC.keys()]
+            for j in range(len(keys_list)):
+                if j == 0:
+                    Final = DIC[keys_list[0]]
+                else:
+                    Final = pd.concat([Final, DIC[keys_list[j]]])
+            return Final
+        DF_airports = concat_dictionary(DF_airports_dic)
         return DF_airports
