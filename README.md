@@ -4,7 +4,7 @@ _In this repository one can find the main codes and results of this part of the 
 
 ## Download 🚀
 
-_Just run: git clone https://github.com/TsspGit/Rn_Time_Series.git in Linux to download the complete project._
+_Just run: git clone git@github.com:TsspGit/Rn_Time_Series.git in Linux to download the complete project._
 
 ## Just to Know
 
