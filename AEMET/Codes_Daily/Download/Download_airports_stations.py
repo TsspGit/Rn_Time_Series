@@ -13,7 +13,7 @@ def main(years=None, cities=None):
     #Obtain Ids of the airports
     A = AEMET_GET(2012, 2012)
     js_stations = A.connect(api_key, 'Station')
-    DF_air = A.get_stations(['BARCELONA', 'ZARAGOZA', 'PAMPLONA', 'HUESCA'], js_stations)
+    DF_air = A.get_stations(cities, js_stations)
     print(DF_air)
     IDs, names = DF_air['indicativo'].values, DF_air['provincia'].values
     
