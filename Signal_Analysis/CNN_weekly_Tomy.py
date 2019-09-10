@@ -157,38 +157,38 @@ def main(save_bool=True):
     
     
 	### Plotting ###
-    # general plot
-    ### Plotting ###
-    # general plot
-    fig,ax = plt.subplots(nrows=1,ncols=1,figsize=(10,4))
-    plt.figure(1)
-    xaxis = ax.get_xaxis()
-    #ax.xaxis.grid(b=True, which='minor', color='0.90', linewidth=0.6)
-    ax.xaxis.set_major_locator(mdates.YearLocator())
-    ax.xaxis.set_minor_locator(mdates.MonthLocator())
-    ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
-    #ax.xaxis.set_minor_formatter(mdates.DateFormatter("%b"))
+	# general plot
+	### Plotting ###
+	# general plot
+	fig,ax = plt.subplots(nrows=1,ncols=1,figsize=(10,4))
+	plt.figure(1)
+	xaxis = ax.get_xaxis()
+	#ax.xaxis.grid(b=True, which='minor', color='0.90', linewidth=0.6)
+	ax.xaxis.set_major_locator(mdates.YearLocator())
+	ax.xaxis.set_minor_locator(mdates.MonthLocator())
+	ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
+	#ax.xaxis.set_minor_formatter(mdates.DateFormatter("%b"))
 
-    ax.plot(pd.date_range(startday, periods=len(mdnRnA), freq='W'), mdnRnA, linewidth=2, color='k', linestyle=':') 
-    ax.plot(pd.date_range(startdaypred, periods=len(pred), freq='W'), pred, linewidth=2, linestyle='-',color='crimson')
-    plt.xlabel('Time')
-    ax.legend(['Data', 'CNN'], loc='upper left')
-    plt.ylim([30, 140])
+	ax.plot(pd.date_range(startday, periods=len(mdnRnA), freq='W'), mdnRnA, linewidth=2, color='k', linestyle=':') 
+	ax.plot(pd.date_range(startdaypred, periods=len(pred), freq='W'), pred, linewidth=2, linestyle='-',color='crimson')
+	plt.xlabel('Time')
+	ax.legend(['Data', 'CNN'], loc='upper left')
+	plt.ylim([30, 140])
 
-    from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes, mark_inset
-    axins = zoomed_inset_axes(ax, 1.7, loc='lower left', bbox_to_anchor=(640,140))
-    axins.plot(pd.date_range(startday, periods=len(mdnRnA), freq='W'), mdnRnA, linewidth=2, color='k', linestyle=':') 
-    axins.plot(pd.date_range(startdaypred, periods=len(pred), freq='W'), pred, linewidth=2, linestyle='-',color='crimson')
-    axins.set_xlim('2017-01-01', '2018-06-17')
-    axins.set_ylim(50, 110)
+	from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes, mark_inset
+	axins = zoomed_inset_axes(ax, 1.7, loc='lower left', bbox_to_anchor=(640,140))
+	axins.plot(pd.date_range(startday, periods=len(mdnRnA), freq='W'), mdnRnA, linewidth=2, color='k', linestyle=':') 
+	axins.plot(pd.date_range(startdaypred, periods=len(pred), freq='W'), pred, linewidth=2, linestyle='-',color='crimson')
+	axins.set_xlim('2017-01-01', '2018-06-17')
+	axins.set_ylim(50, 110)
 
-    plt.xticks(visible=False)
-    plt.yticks(visible=False)
+	plt.xticks(visible=False)
+	plt.yticks(visible=False)
 
-    mark_inset(ax, axins, loc1=2, loc2=4, fc="none", ec="0.5")
+	mark_inset(ax, axins, loc1=2, loc2=4, fc="none", ec="0.5")
 
-    plt.suptitle('Weekly Fitting at LSC - Hall A')
-	
+	plt.suptitle('Weekly Fitting at LSC - Hall A')
+
 	if save_bool:	
 		plt.savefig('./fitting_CNN_weekly_D'+str(neurons[0])+'D'+str(neurons[1])+'_D1_e50_b10_ss52_ts52.eps')
 
@@ -207,7 +207,7 @@ def main(save_bool=True):
 	ax.legend(['Data', 'CNN'])
 	plt.xlabel('Time')
 	plt.suptitle('Weekly Predictions at LSC - Hall A')
-	
+
 	if save_bool:	
 		plt.savefig('./detailedprediction_CNN_weekly_D'+str(neurons[0])+'D'+str(neurons[1])+'_D1_e50_b10_ss52_ts52.eps')
 
@@ -222,10 +222,10 @@ def main(save_bool=True):
 	plt.ylabel('loss')
 	plt.xlabel('epoch')
 	plt.legend(['train', 'test'], loc='upper right')
-	
+
 	if save_bool:		
 		plt.savefig('./loss_CNN_weekly_D'+str(neurons[0])+'D'+str(neurons[1])+'_D1_e50_b10_ss52_ts52.eps')
-
+	print(pd.date_range(startdayahead, periods=len(newValuesReal)))
 	plt.show()
 
-main()
+main(False)
