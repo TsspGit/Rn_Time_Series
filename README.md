@@ -10,13 +10,7 @@ _Just run: git clone git@github.com:TsspGit/Rn_Time_Series.git in Linux to downl
 
 - Most of the .py files are duplicated in .ipynb (jupyter notebooks). Notebooks are the best option to see both the code and the results.
 
-- Seasonal_Decomposition_Rn.ipynb shows the STL decomposition and the seasonality of the signal obtained using a Fast Fourier Transform (FFT)
-
-- CNN_weekly_Tomy.py applies a convolutional neural network to predict the levels of 222Rn the last year of measurements.
-
-- AEMET folder contains two main blocks Daily and Monthly. Those codes are practicaly the same with the difference that is connected to different urls, one for the averages values per month and the other one with the average values per day (which is the one of interest). In both folders one could find a first attempt to access to the data and a folder named Download, that contains the codes to download the final CSV.
-
-## Signal_Analysis
+## Signal_Analysis folder
 
 1. **Seasonal_Decomposition_Rn.py/ipynb** shows the STL decomposition and the seasonality obtained using a FFT.
 How to run Seasonal_Decomposition_Rn.py?
@@ -30,7 +24,7 @@ False: doesn't save the resulting plots
 
 3. In **Rn_Time_Series.pdf** one can find a summary of the signal analysis and the most relevant results.
 
-## AEMET
+## AEMET folder
 
 ### Codes_Daily
 
