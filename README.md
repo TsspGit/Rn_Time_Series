@@ -15,3 +15,36 @@ _Just run: git clone git@github.com:TsspGit/Rn_Time_Series.git in Linux to downl
 - CNN_weekly_Tomy.py applies a convolutional neural network to predict the levels of 222Rn the last year of measurements.
 
 - AEMET folder contains two main blocks Daily and Monthly. Those codes are practicaly the same with the difference that is connected to different urls, one for the averages values per month and the other one with the average values per day (which is the one of interest). In both folders one could find a first attempt to access to the data and a folder named Download, that contains the codes to download the final CSV.
+
+## Signal_Analysis
+
+1. **Seasonal_Decomposition_Rn.py/ipynb** shows the STL decomposition and the seasonality obtained using a FFT.
+How to run Seasonal_Decomposition_Rn.py?
+```
+$ python3 Seasonal_Decomposition_Rn.py <True/False>
+True: save the resulting plots
+False: doesn't save the resulting plots
+```
+
+2. **CNN_weekly_Tomy.py/ipynb** applies a convolutional neural network to forecasting the Radon density levels.
+
+3. In **Rn_Time_Series.pdf** one can find a summary of the signal analysis and the most relevant results.
+
+## AEMET
+
+### Codes_Daily
+
+1. **Download** contains the codes for download the data from the AEMET api, **it is required to own an api key** (https://opendata.aemet.es/centrodedescargas/altaUsuario):
+	- **AEMET_Daily_Test.ipynb** is the first attempt to access the data and the information of the stations.
+	- **AEMET_Daily_class.py** is the brain. To see how it works see the notebook version
+	- **Download_Airports_st.py** is the code used to obtain the final dataframe. The inputs are the cities of the airports stations and the years. The code automatically relates the name of the city with the station ID and append the collumns to a dataframe. Finally, filters the duplicates, sort by date and save it on a .csv file. See the notebook for further details.
+
+2. **First Data Handling.ipynb** is the first attemp to plot the data.
+
+### Codes_Monthly
+
+Follows the same logic than **Codes_Daily**, the difference is that here we access to the averages per month, and this is not useful for carry out our study.
+
+### Data
+
+The target folder with the final csv.
