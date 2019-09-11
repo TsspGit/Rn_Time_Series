@@ -1,4 +1,5 @@
-# Rn Time Series Analysis:
+# Rn Time Series Analysis: 
+![Rn](simbolo_radon.png)
 
 _In this repository one can find the main codes and results of this part of the project_
 
