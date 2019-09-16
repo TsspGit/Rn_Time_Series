@@ -4,10 +4,12 @@ from utils.aemepy import DF_subplots2x2
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
 plt.rc('text',usetex=True)
 plt.rc('font',family='serif')
 
-DF = pd.read_csv('~/Rn_Weekly_NN/AEMET/Data/Daily/BCN_ZGZ_PMP_Daily2012-2018.csv', usecols=range(1, 8))
+file = sys.argv[1]
+DF = pd.read_csv('~/CIEMAT/Rn_Weekly_NN/AEMET/Data/Daily/{}'.format(file), usecols=range(1, 8))
 # 0076 -> BCN, 9263D -> NAVARRA, 9434 -> ZGZ, 9898 -> HUESCA
 DF['presmed'] = DF[['presMax', 'presMin']].mean(axis=1)
 DF = DF.drop(['dir', 'presMax', 'presMin'], axis=1)
@@ -34,16 +36,4 @@ DF_subplots2x2(arr_plts, 'fecha', 'presmed', arr_str, ylabel=r'\bar{P}\ (hPa)', 
 print('plotting V...')
 plt.figure(3, figsize=(12, 8), dpi=300)
 DF_subplots2x2(arr_plts, 'fecha', 'velmedia', arr_str, ylabel=r'\bar{V}\ (ms^{-1})', xlabel='Dates', save=True, v='V', c='r')
-
-# Clear the DF
-BCN_dropna = BCN[(BCN['fecha'] > '2013-07-07') & (BCN['fecha'] < '2019-07-21')].sort_values(['fecha']).dropna()
-BCN_dropna.to_csv('../Data/Daily/BCN/' + 'BCN_notnulls.csv')
-
-NVR_dropna = NVR[(NVR['fecha'] > '2013-07-07') & (NVR['fecha'] < '2019-07-21')].sort_values(['fecha']).dropna()
-NVR_dropna.to_csv('../Data/Daily/NVR/' + 'NVR_notnulls.csv')
-
-HSC_dropna = HSC[(HSC['fecha'] > '2013-07-07') & (HSC['fecha'] < '2019-07-21')].sort_values(['fecha']).dropna()
-HSC_dropna.to_csv('../Data/Daily/HSC/' + 'HSC_notnulls.csv')
-
-ZGZ_dropna = ZGZ[(ZGZ['fecha'] > '2013-07-07') & (ZGZ['fecha'] < '2019-07-21')].sort_values(['fecha']).dropna()
-ZGZ_dropna.to_csv('../Data/Daily/ZGZ/' + 'ZGZ_notnulls.csv')
+plt.show()
