@@ -1,3 +1,5 @@
+__author__ = '@Tssp'
+
 import numpy as np
 import pandas as pd
 import urllib
@@ -54,10 +56,10 @@ def main(years=None, cities=None):
     
     Data = filter_duplicates(Data)
 
-    Data.sort_values('fecha').to_csv('~/Rn_Weekly_NN/AEMET/Data/Daily/BCN_ZGZ_PMP_Huesca_Daily' + str(years[0]) + '-' + str(years[-1]) + '.csv')
+    Data.sort_values('fecha').to_csv('~/CIEMAT/Rn_Weekly_NN/AEMET/Data/Daily/BCN_ZGZ_NVR_HSC_Daily' + str(years[0]) + '-' + str(years[-1]) + '.csv')
     return Data
 
-years = [2012, 2013, 2014, 2015, 2016, 2017, 2018]
+years = [2013, 2014, 2015, 2016, 2017, 2018, 2019]
 cities = ['BARCELONA', 'ZARAGOZA', 'PAMPLONA', 'HUESCA']
 
 main(years, cities)

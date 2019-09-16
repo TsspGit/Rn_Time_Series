@@ -1,0 +1,193 @@
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/6e9ec5e5",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/0556af7a"
+}
+    indicativo  latitud longitud                nombre  provincia
+52        0076  411734N  020412E  BARCELONA AEROPUERTO  BARCELONA
+289       9434  413938N  010015W   ZARAGOZA AEROPUERTO   ZARAGOZA
+219      9263D  424637N  013900W   PAMPLONA AEROPUERTO    NAVARRA
+140       9898  420504N  001932W     HUESCA AEROPUERTO     HUESCA
+
+
+Station: BARCELONA
+Year: 2013:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/b7690312",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+Year: 2014:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/14a9a5d6",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+Year: 2015:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/c71399e6",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+Year: 2016:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/f54a2ea6",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+Year: 2017:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/21857e3a",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+Year: 2018:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/7c7d4d93",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+Year: 2019:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/72da0e19",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+
+
+Station: ZARAGOZA
+Year: 2013:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/ddc35a60",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+Year: 2014:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/36102a10",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+Year: 2015:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/a630b0ca",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+Year: 2016:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/e6cf80ca",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+Year: 2017:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/e8c31081",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+Year: 2018:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/a55e1091",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+Year: 2019:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/90956eb3",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+
+
+Station: NAVARRA
+Year: 2013:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/2c053f8a",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+Year: 2014:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/3eefc638",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+Year: 2015:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/f23b3fa5",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+Year: 2016:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/086cc146",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+Year: 2017:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/73ccf3a2",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+Year: 2018:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/385c4f80",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+Year: 2019:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/5d0d153b",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+
+
+Station: HUESCA
+Year: 2013:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/3afdcdb5",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+Year: 2014:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/5fa06527",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+Year: 2015:
+{
+  "descripcion" : "exito",
+  "estado" : 200,
+  "datos" : "https://opendata.aemet.es/opendata/sh/d9b9b825",
+  "metadatos" : "https://opendata.aemet.es/opendata/sh/b3aa9d28"
+}
+Year: 2016:
+Fail
