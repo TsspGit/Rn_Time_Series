@@ -1,8 +1,6 @@
 __author__ = '@Tssp'
 
-import sys
-sys.path.insert(1, '/afs/ciemat.es/user/t/tomas/Python/utils')
-import global_functions as glob
+from utils.aemepy import DF_subplots2x2
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -26,12 +24,12 @@ arr_str = ['BCN', 'NVR', 'ZGZ', 'HSC']
 ## Temperature:
 print('plotting T...')
 plt.figure(1, figsize=(12, 8), dpi=300)
-glob.DF_subplots2x2(arr_plts, 'fecha', 'tmed', arr_str, ylabel=r'\bar{T}\ (^o C)', xlabel='Dates', save=True, v='T')
+DF_subplots2x2(arr_plts, 'fecha', 'tmed', arr_str, ylabel=r'\bar{T}\ (^o C)', xlabel='Dates', save=True, v='T')
 ## Preassure:
 print('plotting P...')
 plt.figure(2, figsize=(12, 8), dpi=300)
-glob.DF_subplots2x2(arr_plts, 'fecha', 'presmed', arr_str, ylabel=r'\bar{P}\ (hPa)', xlabel='Dates', save=True, v='P', c='b')
+DF_subplots2x2(arr_plts, 'fecha', 'presmed', arr_str, ylabel=r'\bar{P}\ (hPa)', xlabel='Dates', save=True, v='P', c='b')
 # Wind velocity:
 print('plotting V...')
 plt.figure(3, figsize=(12, 8), dpi=300)
-glob.DF_subplots2x2(arr_plts, 'fecha', 'velmedia', arr_str, ylabel=r'\bar{V}\ (ms^{-1})', xlabel='Dates', save=True, v='V', c='r')
+DF_subplots2x2(arr_plts, 'fecha', 'velmedia', arr_str, ylabel=r'\bar{V}\ (ms^{-1})', xlabel='Dates', save=True, v='V', c='r')
