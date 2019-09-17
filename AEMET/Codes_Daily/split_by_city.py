@@ -12,23 +12,29 @@ NVR = DF[DF['indicativo'] == '9263D']
 ZGZ = DF[DF['indicativo'] == '9434']
 HSC = DF[DF['indicativo'] == '9898']
 
+# Cutting by date:
+BCN = BCN[(BCN['fecha'] >= '2013-07-07') & (BCN['fecha'] <= '2019-07-21')].sort_values(['fecha'])
+NVR = NVR[(NVR['fecha'] >= '2013-07-07') & (NVR['fecha'] <= '2019-07-21')].sort_values(['fecha'])
+HSC = HSC[(HSC['fecha'] >= '2013-07-07') & (HSC['fecha'] <= '2019-07-21')].sort_values(['fecha'])
+ZGZ = ZGZ[(ZGZ['fecha'] >= '2013-07-07') & (ZGZ['fecha'] <= '2019-07-21')].sort_values(['fecha'])
+
 # with na
-BCN[(BCN['fecha'] >= '2013-07-07') & (BCN['fecha'] <= '2019-07-21')].sort_values(['fecha']).to_csv('../Data/Daily/BCN/' + 'BCN.csv')
-NVR[(NVR['fecha'] >= '2013-07-07') & (NVR['fecha'] <= '2019-07-21')].sort_values(['fecha']).to_csv('../Data/Daily/NVR/' + 'NVR.csv')
-HSC[(HSC['fecha'] >= '2013-07-07') & (HSC['fecha'] <= '2019-07-21')].sort_values(['fecha']).to_csv('../Data/Daily/HSC/' + 'HSC.csv')
-ZGZ[(ZGZ['fecha'] >= '2013-07-07') & (ZGZ['fecha'] <= '2019-07-21')].sort_values(['fecha']).to_csv('../Data/Daily/ZGZ/' + 'ZGZ.csv')
+BCN.to_csv('../Data/Daily/BCN/' + 'BCN.csv')
+NVR.to_csv('../Data/Daily/NVR/' + 'NVR.csv')
+HSC.to_csv('../Data/Daily/HSC/' + 'HSC.csv')
+ZGZ.to_csv('../Data/Daily/ZGZ/' + 'ZGZ.csv')
 
 # dropna
-BCN_dropna = BCN[(BCN['fecha'] >= '2013-07-07') & (BCN['fecha'] <= '2019-07-21')].sort_values(['fecha']).dropna()
+BCN_dropna = BCN.dropna()
 BCN_dropna.to_csv('../Data/Daily/BCN/' + 'BCN_notnulls.csv')
 
-NVR_dropna = NVR[(NVR['fecha'] >= '2013-07-07') & (NVR['fecha'] <= '2019-07-21')].sort_values(['fecha']).dropna()
+NVR_dropna = NVR.dropna()
 NVR_dropna.to_csv('../Data/Daily/NVR/' + 'NVR_notnulls.csv')
 
-HSC_dropna = HSC[(HSC['fecha'] >= '2013-07-07') & (HSC['fecha'] <= '2019-07-21')].sort_values(['fecha']).dropna()
+HSC_dropna = HSC.dropna()
 HSC_dropna.to_csv('../Data/Daily/HSC/' + 'HSC_notnulls.csv')
 
-ZGZ_dropna = ZGZ[(ZGZ['fecha'] >= '2013-07-07') & (ZGZ['fecha'] <= '2019-07-21')].sort_values(['fecha']).dropna()
+ZGZ_dropna = ZGZ.dropna()
 ZGZ_dropna.to_csv('../Data/Daily/ZGZ/' + 'ZGZ_notnulls.csv')
 
 # fill with avg per month:
@@ -43,4 +49,4 @@ HSC_fillavg.to_csv('../Data/Daily/HSC/' + 'HSC_avgfilled.csv')
 
 ZGZ_fillavg = fill_avg_per_month(ZGZ)
 ZGZ_fillavg.to_csv('../Data/Daily/ZGZ/' + 'ZGZ_avgfilled.csv')
-print('###########\nDone\n############')
+print('\n###########\nDone\n############\n')
