@@ -3,6 +3,7 @@ __author__ = '@Tssp'
 import pandas as pd
 import numpy as np
 import sys
+from utils.aemepy import fill_avg_per_month
 
 file = sys.argv[1] # Name of the complete csv
 DF = pd.read_csv('~/CIEMAT/Rn_Weekly_NN/AEMET/Data/Daily/{}'.format(file), usecols=range(1, 8))
@@ -29,4 +30,17 @@ HSC_dropna.to_csv('../Data/Daily/HSC/' + 'HSC_notnulls.csv')
 
 ZGZ_dropna = ZGZ[(ZGZ['fecha'] >= '2013-07-07') & (ZGZ['fecha'] <= '2019-07-21')].sort_values(['fecha']).dropna()
 ZGZ_dropna.to_csv('../Data/Daily/ZGZ/' + 'ZGZ_notnulls.csv')
-print('Done')
+
+# fill with avg per month:
+BCN_fillavg = fill_avg_per_month(BCN)
+BCN_fillavg.to_csv('../Data/Daily/BCN/' + 'BCN_avgfilled.csv')
+
+NVR_fillavg = fill_avg_per_month(NVR)
+NVR_fillavg.to_csv('../Data/Daily/NVR/' + 'NVR_avgfilled.csv')
+
+HSC_fillavg = fill_avg_per_month(HSC)
+HSC_fillavg.to_csv('../Data/Daily/HSC/' + 'HSC_avgfilled.csv')
+
+ZGZ_fillavg = fill_avg_per_month(ZGZ)
+ZGZ_fillavg.to_csv('../Data/Daily/ZGZ/' + 'ZGZ_avgfilled.csv')
+print('###########\nDone\n############')

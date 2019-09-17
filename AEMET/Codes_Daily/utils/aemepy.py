@@ -21,15 +21,27 @@ def DF_subplots2x2(df_list, xcol, ycol, titles, ylabel='', xlabel='', c='purple'
             plt.savefig('../Figures/{}.png'.format('_'.join(titles) + '-' + (str(v))), bbox_inches='tight')
 
 def concat_dictionary(DIC):
-        keys_list = [key for key in DIC.keys()]
-        for j in range(len(keys_list)):
-            if j == 0:
-                Final = DIC[keys_list[0]]
-            else:
-                Final = pd.concat([Final, DIC[keys_list[j]]])
-        return Final
+    import pandas as pd
+    import numpy as np
+    keys_list = [key for key in DIC.keys()]
+    for j in range(len(keys_list)):
+        if j == 0:
+            Final = DIC[keys_list[0]]
+        else:
+            Final = pd.concat([Final, DIC[keys_list[j]]])
+    return Final
 
 def filter_duplicates(DF):
-        duplicated = DF.duplicated()
-        filter_duplicates = DF.duplicated(keep='first')
-        return Data[~filter_duplicates]
+    import pandas as pd
+    import numpy as np
+    duplicated = DF.duplicated()
+    filter_duplicates = DF.duplicated(keep='first')
+    return Data[~filter_duplicates]
+    
+def fill_avg_per_month(DF):
+    import pandas as pd
+    import numpy as np
+    DF['fecha'] = pd.to_datetime(DF['fecha'])
+    output = DF.groupby([DF['fecha'].dt.year, DF['fecha'].dt.month]).transform(lambda x: x.fillna(x.mean()))
+    output['fecha'] = DF['fecha']
+    return output
