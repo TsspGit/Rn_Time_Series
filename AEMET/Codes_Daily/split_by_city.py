@@ -5,8 +5,11 @@ import numpy as np
 import sys
 from utils.aemepy import fill_avg_per_month
 
-file = sys.argv[1] # Name of the complete csv
+file = sys.argv[1] # Name of the complete csv. i.e. BCN_ZGZ_NVR_HSC_Daily2013-2019.csv
 DF = pd.read_csv('~/CIEMAT/Rn_Weekly_NN/AEMET/Data/Daily/{}'.format(file), usecols=range(1, 8))
+DF['presmed'] = DF[['presMax', 'presMin']].mean(axis=1)
+DF = DF.drop(['dir', 'presMax', 'presMin'], axis=1)
+
 BCN = DF[DF['indicativo'] == '0076']
 NVR = DF[DF['indicativo'] == '9263D']
 ZGZ = DF[DF['indicativo'] == '9434']
