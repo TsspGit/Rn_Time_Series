@@ -9,7 +9,8 @@ plt.rc('text',usetex=True)
 plt.rc('font',family='serif')
 
 file = sys.argv[1] # Name of the complete csv. i.e. BCN_ZGZ_NVR_HSC_Daily2013-2019.csv
-DF = pd.read_csv('~/CIEMAT/Rn_Weekly_NN/AEMET/Data/Daily/{}'.format(file), usecols=range(1, 8))
+DF = pd.read_csv('~/CIEMAT/Rn_Weekly_NN/AEMET/Data/Daily/{}'.format(file),
+                 usecols=['fecha', 'tmed', 'presMax', 'presMin', 'velmedia'])
 # 0076 -> BCN, 9263D -> NAVARRA, 9434 -> ZGZ, 9898 -> HUESCA
 DF['presmed'] = DF[['presMax', 'presMin']].mean(axis=1)
 DF = DF.drop(['dir', 'presMax', 'presMin'], axis=1)

@@ -45,3 +45,8 @@ def fill_avg_per_month(DF):
     output = DF.groupby([DF['fecha'].dt.year, DF['fecha'].dt.month]).transform(lambda x: x.fillna(x.mean()))
     output['fecha'] = DF['fecha']
     return output
+
+def avg_per_weeks(DF):
+    import pandas as pd
+    DF_weeks = DF.set_index(pd.DatetimeIndex(DF['fecha']))
+    return DF_weeks.resample('W').mean()
