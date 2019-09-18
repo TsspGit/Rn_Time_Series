@@ -28,13 +28,13 @@ arr_str = ['BCN', 'NVR', 'ZGZ', 'HSC']
 ## Temperature:
 print('plotting T...')
 plt.figure(1, figsize=(12, 8), dpi=300)
-DF_subplots2x2(arr_plts, 'fecha', 'tmed', arr_str, ylabel=r'\bar{T}\ (^o C)', xlabel='Dates', save=True, v='T')
+DF_subplots2x2(arr_plts, 'fecha', 'tmed', arr_str, ylabel=r'\bar{T}\ (^o C)', xlabel='Dates', save=True, v='T', c='#1f77b4')
 ## Preassure:
 print('plotting P...')
 plt.figure(2, figsize=(12, 8), dpi=300)
-DF_subplots2x2(arr_plts, 'fecha', 'presmed', arr_str, ylabel=r'\bar{P}\ (hPa)', xlabel='Dates', save=True, v='P', c='b')
+DF_subplots2x2(arr_plts, 'fecha', 'presmed', arr_str, ylabel=r'\bar{P}\ (hPa)', xlabel='Dates', save=True, v='P', c='#2ca02c')
 # Wind velocity:
 print('plotting V...')
 plt.figure(3, figsize=(12, 8), dpi=300)
-DF_subplots2x2(arr_plts, 'fecha', 'velmedia', arr_str, ylabel=r'\bar{V}\ (ms^{-1})', xlabel='Dates', save=True, v='V', c='r')
+DF_subplots2x2(arr_plts, 'fecha', 'velmedia', arr_str, ylabel=r'\bar{V}\ (ms^{-1})', xlabel='Dates', save=True, v='V', c='#d62728')
 plt.show()
