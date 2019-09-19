@@ -7,15 +7,18 @@ def DF_subplots2x2(df_list, xcol, ycol, titles, ylabel='', xlabel='', c='#1f77b4
         df_list[i].plot(ax=ax, x=xcol, y=ycol, style='-', color=c)
         plt.title('{}'.format(titles[i]), fontsize=16)
         plt.grid(True)
-        if i == 0 or i==2:
+        if i == 0:
             plt.ylabel(r'${}$'.format(ylabel), fontsize=16)
             plt.xlabel('')
-        elif i == 2 or i == 3:
-            plt.xlabel(r'${}$'.format(xlabel), fontsize=16)
-        else:
+        elif i == 1:
             plt.xlabel('')
+            plt.ylabel('')
+        elif i == 2:
+            plt.xlabel(r'${}$'.format(xlabel), fontsize=16)
+            plt.ylabel(r'${}$'.format(ylabel), fontsize=16)
+        elif i == 3:
+            plt.xlabel(r'${}$'.format(xlabel), fontsize=16)
         ax.get_legend().remove()
-        plt.xticks(rotation=30, fontsize=12)
         plt.tight_layout()
         if save:
             plt.savefig('../Figures/{}.png'.format('_'.join(titles) + '-' + (str(v))), bbox_inches='tight')
@@ -63,7 +66,7 @@ def Rn_Clima_plot(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel='',
         ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
 
         ax.plot(dates, mdnRnA, 'k')
-        ax.set_ylabel('Rn median measurments', fontsize=16)
+        ax.set_ylabel('$^{222}$Rn($Bq \cdot m^{-3}$)', fontsize=16)
 
         ax2 = ax.twinx()
         ax2.plot(DF_list[i][xcol].values, DF_list[i][ycol].values, alpha=0.7, color=c)
@@ -89,7 +92,7 @@ def Rn_Clima_subplots(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel
         ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
         # Rn
         ax.plot(dates, mdnRnA, 'k')
-        ax.set_ylabel('Rn median measurments', fontsize=16)
+        ax.set_ylabel('$^{222}$Rn($Bq \cdot m^{-3}$)', fontsize=16)
         # Climatology
         ax2 = ax.twinx()
         ax2.plot(DF_list[i][xcol].values, DF_list[i][ycol].values, alpha=0.7, color=c)
@@ -97,7 +100,7 @@ def Rn_Clima_subplots(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel
         plt.title('{}'.format(titles[i]), fontsize=16)
 
         if i == 0:
-            ax.set_ylabel('Rn median measurments', fontsize=16)
+            ax.set_ylabel('$^{222}$Rn($Bq \cdot m^{-3}$)', fontsize=16)
             ax.set_xlabel('')
             ax2.set_xlabel('')
         if i == 1:
@@ -106,7 +109,7 @@ def Rn_Clima_subplots(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel
             ax.set_xlabel('')
             ax2.set_xlabel('')
         elif i == 2:
-            ax.set_ylabel('Rn median measurments', fontsize=16)
+            ax.set_ylabel('$^{222}$Rn($Bq \cdot m^{-3}$)', fontsize=16)
             ax.set_xlabel(xlabel, fontsize=16)
         elif i == 3:
             ax2.set_ylabel(r'${}$'.format(ylabel), fontsize=16, rotation=-90, labelpad=30)
