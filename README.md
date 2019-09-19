@@ -33,11 +33,16 @@ False: doesn't save the resulting plots
 	- **AEMET_Daily_Test.ipynb** is the first attempt to access the data and the information of the stations.
 	- **AEMET_Daily_class.py** is the brain. To see how it works see the notebook version
 	- **Download_Airports_st.py** is the code used to obtain the final dataframe. The inputs are the cities of the airports stations and the years. The code automatically relates the name of the city with the station ID and append the collumns to a dataframe. Finally, filters the duplicates, sort by date and save it on a .csv file. See the notebook for further details.
-	- **study_weather.py** takes the dataframe of the city stations downloaded before and plots the average temperature, preassure and wind velocity for each date. An example of running this code on a linux terminal is: *python3 study_weather.py BCN_ZGZ_NVR_HSC_Daily2013-2019.csv*
-	- **split_by_city.py** saves three csv's per city: the complete csv, skipped rows with missing values csv and filled missing values with the avg per month of the correct collumn.
-	- **weekly_Data.py** takes the skipped rows with missing values csv and filled missing values with the avg per month csv as input to create two new csvs with the avg values per week.
 
 2. **First Data Handling.ipynb** is the first attemp to plot the data.
+
+3. **study_weather.py** takes the dataframe of the city stations downloaded before and plots the average temperature, preassure and wind velocity for each date. An example of running this code on a linux terminal is: *python3 study_weather.py BCN_ZGZ_NVR_HSC_Daily2013-2019.csv*
+
+4. **split_by_city.py** saves three csv's per city: the complete csv, skipped rows with missing values csv and filled missing values with the avg per month of the correct collumn.
+
+5. **weekly_Data.py** takes the skipped rows with missing values csv and filled missing values with the avg per month csv as input to create two new csvs with the avg values per week.
+
+6. **Radon_Weather.py** loads the weekly data per city and outputs several Radon - Weather_variable plots. 
 
 ### Codes_Monthly
 
