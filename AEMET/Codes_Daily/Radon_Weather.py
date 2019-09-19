@@ -92,15 +92,15 @@ arravg_str = ['BCN_avg', 'PMP_avg', 'ZGZ_avg', 'HSC_avg']
 
 ## 4 cities in a plot:
 ### Tempeature:
-plt.figure(4, figsize=(14, 10), dpi=300)
+plt.figure(16, figsize=(14, 10), dpi=300)
 Rn_Clima_subplots(DFavg_list, mdnRnA, dates, 'tmed', arr_str, ylabel=r'\bar{T}\ (^o C)', c='#1f77b4',
  v='Tavg', save=True)
 ### Preassure
-plt.figure(5, figsize=(14, 10), dpi=300)
+plt.figure(17, figsize=(14, 10), dpi=300)
 Rn_Clima_subplots(DFavg_list, mdnRnA, dates, 'presmed', arr_str, ylabel=r'\bar{P}\ (hPa)', c='#2ca02c',
  v='Pavg', save=True)
 ### Wind velocity
-plt.figure(6, figsize=(14, 10), dpi=300)
+plt.figure(18, figsize=(14, 10), dpi=300)
 Rn_Clima_subplots(DFavg_list, mdnRnA, dates, 'velmedia', arr_str, ylabel=r'\bar{V}\ (km/s)', c='#d62728',
  v='Vavg', save=True)
 
