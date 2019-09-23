@@ -71,7 +71,7 @@ def avg_per_weeks(DF):
     DF_weeks = DF.set_index(pd.DatetimeIndex(DF['fecha']))
     return DF_weeks.resample('W').mean()
 
-def Rn_Clima_plot(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel='', xlabel='Dates', c='#1f77b4', save=False, v=''):
+def Rn_Clima_plot(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel='', legend='', xlabel='Dates', c='#1f77b4', save=False, v=''):
     import pandas as pd
     import numpy as np
     import matplotlib.pyplot as plt
@@ -88,16 +88,16 @@ def Rn_Clima_plot(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel='',
         ax2 = ax.twinx()
         ax2.plot(DF_list[i][xcol].values, DF_list[i][ycol].values, alpha=0.7, color=c)
         #ax2.set_yscale('log')
-        ax2.set_ylabel(r'${}$'.format(ylabel), fontsize=16, rotation=-90, labelpad=30)
+        ax2.set_ylabel(r'${}$'.format(legend), fontsize=16, rotation=-90, labelpad=30)
 
         plt.xlim([dates[0], dates[-1]])
         ax.set_xlabel('{}'.format(xlabel), fontsize=16)
         ax.legend(['$^{222}$Rn'], fontsize=14, loc='upper left')
-        ax2.legend(['{}'.format(v)], fontsize=14, loc='upper right')
+        ax2.legend(['${}$'.format(v)], fontsize=14, loc='upper right')
         if save:
                 plt.savefig('../Figures/{}'.format(titles[i]) + '-Rn-'+ str(v) + '.png', bbox_inches='tight')
 
-def Rn_Clima_subplots(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel='', xlabel='Dates', c='#1f77b4', save=False, v=''):
+def Rn_Clima_subplots(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel='', legend='', xlabel='Dates', c='#1f77b4', save=False, v=''):
     import pandas as pd
     import numpy as np
     import matplotlib.pyplot as plt
@@ -133,7 +133,7 @@ def Rn_Clima_subplots(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel
             ax.set_ylabel('')
             ax.set_xlabel(xlabel, fontsize=16)
         ax.legend(['$^{222}$Rn'], fontsize=14, loc='upper left')
-        ax2.legend([r'${}$'.format(v)], fontsize=14, loc='upper right')
+        ax2.legend([r'${}$'.format(legend)], fontsize=14, loc='upper right')
         plt.tight_layout()
         if save:
                 plt.savefig('../Figures/{}.png'.format('_'.join(titles) + '-Rn-' + (str(v))), bbox_inches='tight')
