@@ -14,7 +14,7 @@ plt.rcParams['ytick.labelsize']=12
 def print_corr(DF_list, field):
     for i in range(len(DF_list)):
         try:
-            print('\nThe correlation with the avg preassure in {} is: '.format(arr_str[i]),
+            print('\nThe correlation with the avg {} in {} is: '.format(field, arr_str[i]),
              '\nAveraged DF:\n',
                   pearsonr(DF_list[i][field].values, mdnRnA)[0])
         except:
@@ -128,7 +128,7 @@ Rn_Clima_plot(DFavg_list, mdnRnA, dates, 'velmedia', arr_str, ylabel=r'\bar{V}\ 
 ############################################################
 BCN_arima = weekly['BCN_arima']
 BCN_arima['fecha'] = pd.to_datetime(BCN_arima['fecha'])
-NVR_avg = weekly['NVR_avg']
+NVR_arima = weekly['NVR_avg']
 NVR_arima['fecha'] = pd.to_datetime(NVR_arima['fecha'])
 HSC_arima = weekly['HSC_arima']
 HSC_arima['fecha'] = pd.to_datetime(HSC_arima['fecha'])
@@ -139,17 +139,17 @@ arrarima_str = ['BCN_arima', 'PMP_arima', 'ZGZ_arima', 'HSC_arima']
 
 ## 4 cities in a plot:
 ### Tempeature:
-plt.figure(32, figsize=(14, 10), dpi=300)
+plt.figure(31, figsize=(14, 10), dpi=300)
 Rn_Clima_subplots(DFarima_list, mdnRnA, dates, 'tmed', arr_str, ylabel=r'\bar{T}\ (^o C)', c='#1f77b4',legend=r'\bar{T}',
- v='Tavg', save=True)
+ v='Tarima', save=True)
 ### Preassure
-plt.figure(33, figsize=(14, 10), dpi=300)
+plt.figure(32, figsize=(14, 10), dpi=300)
 Rn_Clima_subplots(DFarima_list, mdnRnA, dates, 'presmed', arr_str, ylabel=r'\bar{P}\ (hPa)', c='#2ca02c',legend=r'\bar{P}',
- v='Pavg', save=True)
+ v='Parima', save=True)
 ### Wind velocity
-plt.figure(34, figsize=(14, 10), dpi=300)
+plt.figure(33, figsize=(14, 10), dpi=300)
 Rn_Clima_subplots(DFarima_list, mdnRnA, dates, 'velmedia', arr_str, ylabel=r'\bar{V}\ (km/s)', c='#d62728',legend=r'\bar{V}',
- v='Vavg', save=True)
+ v='Varima', save=True)
 
 ## 1 plot per city:
 ### Temperature:
@@ -165,10 +165,10 @@ Rn_Clima_plot(DFarima_list, mdnRnA, dates, 'velmedia', arr_str, ylabel=r'\bar{V}
 # Print correlations:
 print_corr(DF_list, 'tmed')
 print_corr(DFavg_list, 'tmed')
+print_corr(DFarima_list, 'tmed')
 print_corr(DF_list, 'presmed')
 print_corr(DFavg_list, 'presmed')
+print_corr(DFarima_list, 'presmed')
 print_corr(DF_list, 'velmedia')
 print_corr(DFavg_list, 'velmedia')
-print_corr(DFarima_list, 'tmed')
-print_corr(DFarima_list, 'presmed')
 print_corr(DFarima_list, 'velmedia')

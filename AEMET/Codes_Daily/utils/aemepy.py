@@ -93,7 +93,7 @@ def Rn_Clima_plot(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel='',
         plt.xlim([dates[0], dates[-1]])
         ax.set_xlabel('{}'.format(xlabel), fontsize=16)
         ax.legend(['$^{222}$Rn'], fontsize=14, loc='upper left')
-        ax2.legend(['${}$'.format(v)], fontsize=14, loc='upper right')
+        ax2.legend(['${}$'.format(legend)], fontsize=14, loc='upper right')
         if save:
                 plt.savefig('../Figures/{}'.format(titles[i]) + '-Rn-'+ str(v) + '.png', bbox_inches='tight')
 
