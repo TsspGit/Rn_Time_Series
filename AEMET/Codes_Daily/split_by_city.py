@@ -3,7 +3,7 @@ __author__ = '@Tssp'
 import pandas as pd
 import numpy as np
 import sys
-from utils.aemepy import fill_avg_per_month
+from utils.aemepy import fill_avg_per_month, fill_arima_per_month
 
 file = sys.argv[1] # Name of the complete csv. i.e. BCN_ZGZ_NVR_HSC_Daily2013-2019.csv
 DF = pd.read_csv('~/CIEMAT/Rn_Weekly_NN/AEMET/Data/Daily/{}'.format(file),
@@ -53,4 +53,17 @@ HSC_fillavg.to_csv('../Data/Daily/HSC/' + 'HSC_avgfilled.csv')
 
 ZGZ_fillavg = fill_avg_per_month(ZGZ)
 ZGZ_fillavg.to_csv('../Data/Daily/ZGZ/' + 'ZGZ_avgfilled.csv')
+
+# fill with ARIMA over avg per month
+BCN_arima = fill_arima_per_month(BCN_fillavg)
+BCN_arima.to_csv('../Data/Daily/BCN/' + 'BCN_arima.csv')
+
+NVR_arima = fill_arima_per_month(NVR_fillavg)
+NVR_arima.to_csv('../Data/Daily/NVR/' + 'NVR_arima.csv')
+
+HSC_arima = fill_arima_per_month(HSC_fillavg)
+HSC_arima.to_csv('../Data/Daily/HSC/' + 'HSC_arima.csv')
+
+ZGZ_arima = fill_arima_per_month(ZGZ_fillavg)
+ZGZ_arima.to_csv('../Data/Daily/ZGZ/' + 'ZGZ_arima.csv')
 print('\n###########\nDone\n############\n')

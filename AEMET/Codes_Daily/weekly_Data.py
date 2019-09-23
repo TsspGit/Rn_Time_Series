@@ -11,6 +11,8 @@ for city in list_cities:
                             usecols=['fecha', 'tmed', 'presmed', 'velmedia'])
     dic[city + '_avg'] = pd.read_csv(f'~/CIEMAT/Rn_Weekly_NN/AEMET/Data/Daily/{city}/{city}_avgfilled.csv',
                                      usecols=['fecha', 'tmed', 'presmed', 'velmedia'])
+    dic[city + '_arima'] = pd.read_csv(f'~/CIEMAT/Rn_Weekly_NN/AEMET/Data/Daily/{city}/{city}_arima.csv',
+                                     usecols=['fecha', 'tmed', 'presmed', 'velmedia'])
 
 # New DF with means by weeks
 output = {}

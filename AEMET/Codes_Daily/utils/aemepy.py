@@ -49,6 +49,23 @@ def fill_avg_per_month(DF):
     output['fecha'] = DF['fecha']
     return output
 
+def fill_arima_per_month(DF):
+    import pandas as pd
+    import numpy as np
+    from statsmodels.tsa.arima_model import ARIMA
+    from sklearn.metrics import mean_squared_error
+    DFavg = fill_avg_per_month(DF)
+    DFavg['fecha'] = pd.to_datetime(DFavg['fecha'])
+    cols = ['tmed', 'presmed', 'velmedia']
+    for col in cols:
+        model = ARIMA(endog=DFavg[col], order=(3, 0, 1), dates=DFavg['fecha'], freq='D')
+        results = model.fit()
+        print('MSE ARIMA {}: '.format(col), mean_squared_error(DFavg[col].values, results.fittedvalues))
+        DF['ARIMA_' + col] = results.fittedvalues
+        DF[col] = DFavg[col].fillna(DF[DF[col].isnull()]['ARIMA_' + col])
+        DF = DF.drop(['ARIMA_' + col], axis=1)
+    return DF
+        
 def avg_per_weeks(DF):
     import pandas as pd
     DF_weeks = DF.set_index(pd.DatetimeIndex(DF['fecha']))
