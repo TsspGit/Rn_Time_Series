@@ -17,7 +17,7 @@ neuron = [64, 32]
 startday = pd.datetime(2013, 7, 1)
 
 ## Plot:
-CNN_loss = np.loadtxt('./CNN_Loss_Rn_{}_{}.txt'.format(neuron[0], neuron[1]), delimiter=',')
+CNN_loss = np.loadtxt('./CNN_Loss_Rn_{}_{}_v2.txt'.format(neuron[0], neuron[1]), delimiter=',')
 train_loss = CNN_loss[0]
 test_loss = CNN_loss[1]
 fig,ax = plt.subplots(nrows=1,ncols=1,figsize=(10,6))
@@ -27,10 +27,10 @@ plt.ylabel('loss', fontsize=14)
 plt.xlabel('epoch', fontsize=14)
 plt.legend(['train', 'test'], loc='upper right')
 plt.tight_layout()
-plt.savefig('./CNN_Loss_Rn_{}_{}.png'.format(neuron[0], neuron[1]))
+plt.savefig('./CNN_Loss_Rn_{}_{}_v2.png'.format(neuron[0], neuron[1]))
 
 ## Plot 2:
-pred = np.loadtxt('./CNN_Rn_{}_{}.txt'.format(neuron[0], neuron[1]), usecols=(0,))
+pred = np.loadtxt('./CNN_Rn_{}_{}_v2.txt'.format(neuron[0], neuron[1]), usecols=(0,))
 startdaypred = pd.datetime(2013, 7, 1) + 7*pd.Timedelta( len(mdnRnA)-len(pred), unit='D')
 fig,ax = plt.subplots(nrows=1,ncols=1,figsize=(8,4), constrained_layout=True)
 xaxis = ax.get_xaxis()
@@ -58,12 +58,12 @@ plt.xticks(visible=True)
 plt.yticks(visible=False)
 mark_inset(ax, axins, loc1=2, loc2=4, fc="none", ec="0.5")
 plt.suptitle('Weekly Fitting at LSC - Hall A')
-fig.savefig('./CNN_Rn_{}_{}.png'.format(neuron[0], neuron[1]), bbox_inches='tight', dpi=300)
+fig.savefig('./CNN_Rn_{}_{}_v2.png'.format(neuron[0], neuron[1]), bbox_inches='tight', dpi=300)
 
 # Rn + T
 
 # Plot:
-CNN_loss = np.loadtxt('./CNN_Loss_RnT_PMP_{}_{}.txt'.format(neuron[0], neuron[1]), delimiter=',')
+CNN_loss = np.loadtxt('./CNN_Loss_RnT_PMP_{}_{}_v2.txt'.format(neuron[0], neuron[1]), delimiter=',')
 train_loss = CNN_loss[0]
 test_loss = CNN_loss[1]
 fig,ax = plt.subplots(nrows=1,ncols=1,figsize=(10,6))
@@ -73,10 +73,10 @@ plt.ylabel('loss', fontsize=14)
 plt.xlabel('epoch', fontsize=14)
 plt.legend(['train', 'test'], loc='upper right')
 plt.tight_layout()
-plt.savefig('./CNN_Loss_RnT_PMP_{}_{}.png'.format(neuron[0], neuron[1]))
+plt.savefig('./CNN_Loss_RnT_PMP_{}_{}_v2.png'.format(neuron[0], neuron[1]))
 
 ## Plot 2:
-pred = np.loadtxt('./CNN_RnT_PMP_{}_{}.txt'.format(neuron[0], neuron[1]), usecols=(0,))
+pred = np.loadtxt('./CNN_RnT_PMP_{}_{}_v2.txt'.format(neuron[0], neuron[1]), usecols=(0,))
 startdaypred = pd.datetime(2013, 7, 1) + 7*pd.Timedelta( len(mdnRnA)-len(pred), unit='D')
 fig,ax = plt.subplots(nrows=1,ncols=1,figsize=(8,4), constrained_layout=True)
 xaxis = ax.get_xaxis()
@@ -104,5 +104,5 @@ plt.xticks(visible=True)
 plt.yticks(visible=False)
 mark_inset(ax, axins, loc1=2, loc2=4, fc="none", ec="0.5")
 plt.suptitle('Weekly Fitting at LSC - Hall A')
-fig.savefig('./CNN_RnT_PMP_{}_{}.png'.format(neuron[0], neuron[1]), bbox_inches='tight', dpi=300)
+fig.savefig('./CNN_RnT_PMP_{}_{}_v2.png'.format(neuron[0], neuron[1]), bbox_inches='tight', dpi=300)
 plt.show()
