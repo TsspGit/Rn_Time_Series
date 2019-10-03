@@ -76,6 +76,8 @@ def Rn_Clima_plot(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel='',
     import numpy as np
     import matplotlib.pyplot as plt
     import matplotlib.dates as mdates
+    plt.rcParams['xtick.labelsize']=13
+    plt.rcParams['ytick.labelsize']=13
     for i in range(len(DF_list)):
         fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(14, 6), dpi=300)
         xaxis = ax.get_xaxis()
@@ -102,6 +104,8 @@ def Rn_Clima_subplots(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel
     import numpy as np
     import matplotlib.pyplot as plt
     import matplotlib.dates as mdates
+    plt.rcParams['xtick.labelsize']=13
+    plt.rcParams['ytick.labelsize']=13
     for i in range(len(DF_list)):
         ax = plt.subplot(2, 2, i+1)
         xaxis = ax.get_xaxis()
