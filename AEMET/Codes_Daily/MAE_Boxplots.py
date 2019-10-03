@@ -22,7 +22,7 @@ X = [EAM_Rn, EAM_RnT_BCN, EAM_RnT_PMP, EAM_RnT_ZGZ, EAM_RnT_HSC]
 lbl = ['Rn', 'Rn+T BCN', 'Rn+T PMP', 'Rn+T ZGZ', 'Rn+T HSC']
 fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 6))
 bplot = ax.boxplot(X, sym='+', labels=lbl, notch=True, 
-                   medianprops=dict(linestyle='-', linewidth=1.4, color='purple'))
+                   medianprops=dict(linestyle='-', linewidth=1.4, color='k'))
 plt.ylabel('$MAE\ (Bq \cdot m^{-3})$')
 # colors = ['#1f77b4', 'yellow', '#2ca02c', 'red', 'darkviolet']
 # for patch, color in zip(bplot['boxes'], colors):
