@@ -21,10 +21,10 @@ EAM_RnT_HSC = [8.281530583158453, 8.28206115073346, 8.177005159093978, 8.0525655
 X = [EAM_Rn, EAM_RnT_BCN, EAM_RnT_PMP, EAM_RnT_ZGZ, EAM_RnT_HSC]
 lbl = ['Rn', 'Rn+T BCN', 'Rn+T PMP', 'Rn+T ZGZ', 'Rn+T HSC']
 fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 6))
-bplot = ax.boxplot(X, sym='+', labels=lbl, patch_artist=True, notch=True, 
-                   medianprops=dict(linestyle='-', linewidth=1.4, color='k'))
+bplot = ax.boxplot(X, sym='+', labels=lbl, notch=True, 
+                   medianprops=dict(linestyle='-', linewidth=1.4, color='purple'))
 plt.ylabel('$MAE\ (Bq \cdot m^{-3})$')
-colors = ['#1f77b4', 'yellow', '#2ca02c', 'red', 'darkviolet']
-for patch, color in zip(bplot['boxes'], colors):
-    patch.set_facecolor(color)
-fig.savefig('../Figures/CNN/MAE_Boxplot.png', dpi=300)
+# colors = ['#1f77b4', 'yellow', '#2ca02c', 'red', 'darkviolet']
+# for patch, color in zip(bplot['boxes'], colors):
+#     patch.set_facecolor(color)
+fig.savefig('../Figures/CNN/MAE_Boxplot_wcolor.eps', dpi=300)
