@@ -88,7 +88,7 @@ def Rn_Clima_plot(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel='',
         ax.set_ylabel('$^{222}$Rn($Bq \cdot m^{-3}$)', fontsize=16)
 
         ax2 = ax.twinx()
-        ax2.plot(DF_list[i][xcol].values, DF_list[i][ycol].values, alpha=0.7, color=c)
+        ax2.plot(DF_list[i][xcol].values, DF_list[i][ycol].values, alpha=0.7, color=c, marker='x', linestyle=':')
         #ax2.set_yscale('log')
         ax2.set_ylabel(r'${}$'.format(ylabel), fontsize=16, rotation=-90, labelpad=30)
 
@@ -97,7 +97,7 @@ def Rn_Clima_plot(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel='',
         ax.legend(['$^{222}$Rn'], fontsize=14, loc='upper left')
         ax2.legend(['${}$'.format(legend)], fontsize=14, loc='upper right')
         if save:
-                plt.savefig('../Figures/{}'.format(titles[i]) + '-Rn-'+ str(v) + '.eps', bbox_inches='tight')
+                plt.savefig('../Figures/{}'.format(titles[i]) + '-Rn-'+ str(v) + '_wcolor.eps', bbox_inches='tight')
 
 def Rn_Clima_subplots(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel='', legend='', xlabel='Dates', c='#1f77b4', save=False, v=''):
     import pandas as pd
@@ -116,7 +116,7 @@ def Rn_Clima_subplots(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel
         ax.set_ylabel('$^{222}$Rn($Bq \cdot m^{-3}$)', fontsize=16)
         # Climatology
         ax2 = ax.twinx()
-        ax2.plot(DF_list[i][xcol].values, DF_list[i][ycol].values, alpha=0.7, color=c)
+        ax2.plot(DF_list[i][xcol].values, DF_list[i][ycol].values, alpha=1, color=c, marker='x', linestyle=':')
         plt.xlim([dates[0], dates[-1]])
         plt.title('{}'.format(titles[i]), fontsize=16)
 
@@ -140,4 +140,4 @@ def Rn_Clima_subplots(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel
         ax2.legend([r'${}$'.format(ylabel)], fontsize=14, loc='upper right')
         plt.tight_layout()
         if save:
-                plt.savefig('../Figures/{}.eps'.format('_'.join(titles) + '-Rn-' + (str(v))), bbox_inches='tight')
+                plt.savefig('../Figures/{}_wcolor.eps'.format('_'.join(titles) + '-Rn-' + (str(v))), bbox_inches='tight')
