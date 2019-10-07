@@ -23,6 +23,10 @@ from scipy import fftpack
 import global_functions as glb
 plt.rc('text',usetex=True)
 plt.rc('font',family='serif')
+plt.rcParams['xtick.labelsize']=13
+plt.rcParams['ytick.labelsize']=13
+plt.rcParams['axes.labelsize']=16
+plt.rcParams['axes.titlesize']=16
 
 if len(sys.argv) == 2 and (bool(sys.argv[1]) == True or bool(sys.argv[1]) == False):
 
@@ -40,12 +44,12 @@ if len(sys.argv) == 2 and (bool(sys.argv[1]) == True or bool(sys.argv[1]) == Fal
 		series = pd.Series(data=mdnRnA, index=dates)
 		print("Data:\n", series.head())
 
-		fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 8))
+		fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 8), dpi=300)
 		plt.figure(1)
-		series.plot(linestyle='-', lw=2, color='purple')
+		series.plot(linestyle='-', lw=2, color='k')
 		plt.xlabel('Time', fontsize=14)
-		plt.ylabel('$^{222}$Rn($Bq \cdot m^{-3}$)', fontsize=14)
-		plt.title('Weekly fitting at LSC - Hall A', fontsize=14)
+		plt.ylabel('$^{222}$Rn($Bq \cdot m^{-3}$)')
+		plt.title('Weekly fitting at LSC - Hall A')
 
 		# STL Decomposition of the signal:
 
@@ -60,20 +64,20 @@ if len(sys.argv) == 2 and (bool(sys.argv[1]) == True or bool(sys.argv[1]) == Fal
 
 		# Figure with the differents contributions:
 
-		plt.figure(2, figsize=(12, 8))
+		plt.figure(2, figsize=(12, 8), dpi=300)
 
 		for i in range(len(arr_plts)):
 		    ax = plt.subplot(2, 2, i+1)
-		    arr_plts[i].plot(lw=1.5, color='purple')
-		    plt.title('{}'.format(arr_str[i]), fontsize=13)
+		    arr_plts[i].plot(lw=1.5, color='k')
+		    plt.title('{}'.format(arr_str[i]))
 		    plt.grid(True)
 		    if i == 0 or i == 2:
-		        plt.ylabel('$^{222}$Rn($Bq \cdot m^{-3}$)', fontsize=13)
-		        plt.xlabel('Years', fontsize=13)
+		        plt.ylabel('$^{222}$Rn($Bq \cdot m^{-3}$)')
+		        plt.xlabel('Years')
 		    plt.tight_layout()
 
 		if save_bool:
-			plt.savefig('./Rn_Seasonal_Decomposition.eps', bbox_inches='tight')
+			plt.savefig('./Rn_Seasonal_Decomposition_wcolor.eps', bbox_inches='tight')
 
 
 		# Fast Fourier Transform (FFT):
@@ -86,23 +90,23 @@ if len(sys.argv) == 2 and (bool(sys.argv[1]) == True or bool(sys.argv[1]) == Fal
 		FFT = FFT[i]
 		# Figure:
 
-		plt.figure(3, figsize=(16, 8))
+		plt.figure(3, figsize=(16, 8), dpi=300)
 
 		ax = plt.subplot(2, 2, 1)
-		observed.plot(color='purple', lw=1.5)
-		plt.xlabel('Years', fontsize=14)
-		plt.ylabel('$^{222}$Rn($Bq \cdot m^{-3}$)', fontsize=14)
+		observed.plot(color='k', lw=1.5)
+		plt.xlabel('Years')
+		plt.ylabel('$^{222}$Rn($Bq \cdot m^{-3}$)')
 		plt.grid(True)
 
 		ax = plt.subplot(2, 2, 3)
-		plt.plot(freqs, FFT, color='darkgreen', lw=1.5)
-		plt.xlabel('Freq $(weeks^{-1})$', fontsize=14)
-		plt.ylabel('FFT $^{222}$Rn($Bq \cdot Hz^{-1} \cdot m^{-3}$)', fontsize=14)
+		plt.plot(freqs, FFT, color='k', lw=1.5)
+		plt.xlabel('Freq $(weeks^{-1})$')
+		plt.ylabel('FFT $^{222}$Rn($Bq \cdot Hz^{-1} \cdot m^{-3}$)')
 		plt.grid(True)
 
 		plt.tight_layout()
 		if save_bool:
-			plt.savefig('./Rn_FFT.eps', bbox_inches='tight')
+			plt.savefig('./Rn_FFT_wcolor.eps', bbox_inches='tight')
 
 		j = (FFT == np.max(FFT))
 		print("The most relevant period in the time series is: {} months".format(round(1/freqs[j][0], 2)))
