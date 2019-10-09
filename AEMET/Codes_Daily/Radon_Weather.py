@@ -9,6 +9,8 @@ plt.rc('text',usetex=True)
 plt.rc('font',family='serif')
 plt.rcParams['xtick.labelsize']=13
 plt.rcParams['ytick.labelsize']=13
+plt.rcParams['axes.labelsize']=16
+plt.rcParams['axes.titlesize']=16
 
 # Correlation print function:
 def print_corr(DF_list, field):
@@ -54,32 +56,32 @@ arr_str = ['BCN', 'PMP', 'ZGZ', 'HSC']
 
 ## 4 cities in a plot:
 ### Tempeature:
-plt.figure(1, figsize=(14, 10), dpi=300)
-Rn_Clima_subplots(DF_list, mdnRnA, dates, 'tmed', arr_str, ylabel=r'\bar{T}\ (^o C)', c='#1f77b4', legend=r'\bar{T}',
+plt.figure(1, figsize=(14, 10), dpi=100)
+Rn_Clima_subplots(DF_list, mdnRnA, dates, 'tmed', arr_str, ylabel=r'\bar{T}\ (^o C)', c='dimgray', legend=r'\bar{T}',
                   v='T',
  save=True)
 ### Preassure
-plt.figure(2, figsize=(14, 10), dpi=300)
-Rn_Clima_subplots(DF_list, mdnRnA, dates, 'presmed', arr_str, ylabel=r'\bar{P}\ (hPa)', c='#2ca02c', legend=r'\bar{P}',
+plt.figure(2, figsize=(14, 10), dpi=100)
+Rn_Clima_subplots(DF_list, mdnRnA, dates, 'presmed', arr_str, ylabel=r'\bar{P}\ (hPa)', c='dimgray', legend=r'\bar{P}',
                    v='P',
  save=True)
 ### Wind velocity
-plt.figure(3, figsize=(14, 10), dpi=300)
-Rn_Clima_subplots(DF_list, mdnRnA, dates, 'velmedia', arr_str, ylabel=r'\bar{V}\ (km/s)', c='#d62728', legend=r'\bar{V}',
+plt.figure(3, figsize=(14, 10), dpi=100)
+Rn_Clima_subplots(DF_list, mdnRnA, dates, 'velmedia', arr_str, ylabel=r'\bar{V}\ (km/s)', c='dimgray', legend=r'\bar{V}',
                    v='V',
  save=True)
 
 ## 1 plot per city:
 ### Temperature:
-Rn_Clima_plot(DF_list, mdnRnA, dates, 'tmed', arr_str, ylabel=r'\bar{T}\ (^o C)', c='#1f77b4', legend=r'\bar{T}',
+Rn_Clima_plot(DF_list, mdnRnA, dates, 'tmed', arr_str, ylabel=r'\bar{T}\ (^o C)', c='dimgray', legend=r'\bar{T}',
                    v='T',
  save=True)
 ### Preassure:
-Rn_Clima_plot(DF_list, mdnRnA, dates, 'presmed', arr_str, ylabel=r'\bar{P}\ (hPa)', c='#2ca02c', legend=r'\bar{P}',
+Rn_Clima_plot(DF_list, mdnRnA, dates, 'presmed', arr_str, ylabel=r'\bar{P}\ (hPa)', c='dimgray', legend=r'\bar{P}',
                    v='P',
  save=True)
 ### Wind velocity:
-Rn_Clima_plot(DF_list, mdnRnA, dates, 'velmedia', arr_str, ylabel=r'\bar{V}\ (km/s)', c='#d62728', legend=r'\bar{V}',
+Rn_Clima_plot(DF_list, mdnRnA, dates, 'velmedia', arr_str, ylabel=r'\bar{V}\ (km/s)', c='dimgray', legend=r'\bar{V}',
                    v='V',
  save=True)
 
@@ -100,27 +102,27 @@ arravg_str = ['BCN_avg', 'PMP_avg', 'ZGZ_avg', 'HSC_avg']
 
 ## 4 cities in a plot:
 ### Tempeature:
-plt.figure(16, figsize=(14, 10), dpi=300)
-Rn_Clima_subplots(DFavg_list, mdnRnA, dates, 'tmed', arr_str, ylabel=r'\bar{T}\ (^o C)', c='#1f77b4', legend=r'\bar{T}',
+plt.figure(16, figsize=(14, 10), dpi=100)
+Rn_Clima_subplots(DFavg_list, mdnRnA, dates, 'tmed', arr_str, ylabel=r'\bar{T}\ (^o C)', c='dimgray', legend=r'\bar{T}',
  v='Tavg', save=True)
 ### Preassure
-plt.figure(17, figsize=(14, 10), dpi=300)
-Rn_Clima_subplots(DFavg_list, mdnRnA, dates, 'presmed', arr_str, ylabel=r'\bar{P}\ (hPa)', c='#2ca02c',legend=r'\bar{P}',
+plt.figure(17, figsize=(14, 10), dpi=100)
+Rn_Clima_subplots(DFavg_list, mdnRnA, dates, 'presmed', arr_str, ylabel=r'\bar{P}\ (hPa)', c='dimgray',legend=r'\bar{P}',
  v='Pavg', save=True)
 ### Wind velocity
-plt.figure(18, figsize=(14, 10), dpi=300)
-Rn_Clima_subplots(DFavg_list, mdnRnA, dates, 'velmedia', arr_str, ylabel=r'\bar{V}\ (km/s)', c='#d62728',legend=r'\bar{V}',
+plt.figure(18, figsize=(14, 10), dpi=100)
+Rn_Clima_subplots(DFavg_list, mdnRnA, dates, 'velmedia', arr_str, ylabel=r'\bar{V}\ (km/s)', c='dimgray',legend=r'\bar{V}',
  v='Vavg', save=True)
 
 ## 1 plot per city:
 ### Temperature:
-Rn_Clima_plot(DFavg_list, mdnRnA, dates, 'tmed', arr_str, ylabel=r'\bar{T}\ (^o C)', c='#1f77b4',legend=r'\bar{T}',
+Rn_Clima_plot(DFavg_list, mdnRnA, dates, 'tmed', arr_str, ylabel=r'\bar{T}\ (^o C)', c='dimgray',legend=r'\bar{T}',
  v='Tavg', save=True)
 ### Preassure:
-Rn_Clima_plot(DFavg_list, mdnRnA, dates, 'presmed', arr_str, ylabel=r'\bar{P}\ (hPa)', c='#2ca02c',legend=r'\bar{P}',
+Rn_Clima_plot(DFavg_list, mdnRnA, dates, 'presmed', arr_str, ylabel=r'\bar{P}\ (hPa)', c='dimgray',legend=r'\bar{P}',
  v='Pavg', save=True)
 ### Wind velocity:
-Rn_Clima_plot(DFavg_list, mdnRnA, dates, 'velmedia', arr_str, ylabel=r'\bar{V}\ (km/s)', c='#d62728',legend=r'\bar{V}',
+Rn_Clima_plot(DFavg_list, mdnRnA, dates, 'velmedia', arr_str, ylabel=r'\bar{V}\ (km/s)', c='dimgray',legend=r'\bar{V}',
  v='Vavg', save=True)
 
 ############################################################
@@ -139,27 +141,27 @@ arrarima_str = ['BCN_arima', 'PMP_arima', 'ZGZ_arima', 'HSC_arima']
 
 ## 4 cities in a plot:
 ### Tempeature:
-plt.figure(31, figsize=(14, 10), dpi=300)
-Rn_Clima_subplots(DFarima_list, mdnRnA, dates, 'tmed', arr_str, ylabel=r'\bar{T}\ (^o C)', c='#1f77b4',legend=r'\bar{T}',
+plt.figure(31, figsize=(14, 10), dpi=100)
+Rn_Clima_subplots(DFarima_list, mdnRnA, dates, 'tmed', arr_str, ylabel=r'\bar{T}\ (^o C)', c='dimgray',legend=r'\bar{T}',
  v='Tarima', save=True)
 ### Preassure
-plt.figure(32, figsize=(14, 10), dpi=300)
-Rn_Clima_subplots(DFarima_list, mdnRnA, dates, 'presmed', arr_str, ylabel=r'\bar{P}\ (hPa)', c='#2ca02c',legend=r'\bar{P}',
+plt.figure(32, figsize=(14, 10), dpi=100)
+Rn_Clima_subplots(DFarima_list, mdnRnA, dates, 'presmed', arr_str, ylabel=r'\bar{P}\ (hPa)', c='dimgray',legend=r'\bar{P}',
  v='Parima', save=True)
 ### Wind velocity
-plt.figure(33, figsize=(14, 10), dpi=300)
-Rn_Clima_subplots(DFarima_list, mdnRnA, dates, 'velmedia', arr_str, ylabel=r'\bar{V}\ (km/s)', c='#d62728',legend=r'\bar{V}',
+plt.figure(33, figsize=(14, 10), dpi=100)
+Rn_Clima_subplots(DFarima_list, mdnRnA, dates, 'velmedia', arr_str, ylabel=r'\bar{V}\ (km/s)', c='dimgray',legend=r'\bar{V}',
  v='Varima', save=True)
 
 ## 1 plot per city:
 ### Temperature:
-Rn_Clima_plot(DFarima_list, mdnRnA, dates, 'tmed', arr_str, ylabel=r'\bar{T}\ (^o C)', c='#1f77b4',legend=r'\bar{T}',
+Rn_Clima_plot(DFarima_list, mdnRnA, dates, 'tmed', arr_str, ylabel=r'\bar{T}\ (^o C)', c='dimgray',legend=r'\bar{T}',
  v='Tarima', save=True)
 ### Preassure:
-Rn_Clima_plot(DFarima_list, mdnRnA, dates, 'presmed', arr_str, ylabel=r'\bar{P}\ (hPa)', c='#2ca02c',legend=r'\bar{P}',
+Rn_Clima_plot(DFarima_list, mdnRnA, dates, 'presmed', arr_str, ylabel=r'\bar{P}\ (hPa)', c='dimgray',legend=r'\bar{P}',
  v='Parima', save=True)
 ### Wind velocity:
-Rn_Clima_plot(DFarima_list, mdnRnA, dates, 'velmedia', arr_str, ylabel=r'\bar{V}\ (km/s)', c='#d62728',legend=r'\bar{V}',
+Rn_Clima_plot(DFarima_list, mdnRnA, dates, 'velmedia', arr_str, ylabel=r'\bar{V}\ (km/s)', c='dimgray',legend=r'\bar{V}',
  v='Varima', save=True)
 
 # Print correlations:

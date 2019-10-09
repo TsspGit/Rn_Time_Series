@@ -79,7 +79,7 @@ def Rn_Clima_plot(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel='',
     plt.rcParams['xtick.labelsize']=13
     plt.rcParams['ytick.labelsize']=13
     for i in range(len(DF_list)):
-        fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(14, 6), dpi=300)
+        fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(14, 6), dpi=100)
         xaxis = ax.get_xaxis()
         ax.xaxis.set_major_locator(mdates.YearLocator())
         ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
