@@ -4,16 +4,16 @@ __author__ = '@Tssp'
 
 import numpy as np
 import matplotlib.pyplot as plt
-# from keras.models import Sequential
-# from keras.layers import Dense, Dropout, Activation, Flatten, BatchNormalization
-# from keras.layers.convolutional import Conv1D, MaxPooling1D
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Activation, Flatten, BatchNormalization
+from keras.layers.convolutional import Conv1D, MaxPooling1D
 import pandas as pd  
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 from scipy.stats.stats import pearsonr
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 import matplotlib.dates as mdates
-
+from copy import copy
 
 def loadallDF(list_cities, mdnRnA):
     import pandas as pd
@@ -57,7 +57,6 @@ def train_test_split(X, test_size):
 def NN(neurons, nep, X_train, Y_train, X_test, Y_test, sample_size, v=0, btch_size=10):
     model = Sequential()
     model.add(Conv1D(filters=neurons[0], kernel_size=3, activation='relu', input_shape=X_train.shape[1:]))
-    model.add(MaxPooling1D(pool_size=2))
     model.add(Flatten())
     model.add(Dense(neurons[0], activation='relu'))
     model.add(Dense(neurons[1], activation='relu'))
@@ -76,12 +75,18 @@ def show_errors(neurons, Xtrainlist, Y_train, Xtest_list, Y_test, arr_str, itera
         ECM = []
         EAM = []
         for it in range(iterations):
-            print('Iteration ', it)
-            history, pred, acc_train, acc_test = NN(neurons, 35, Xtrainlist[i], Y_train,
+            #print('Iteration ', it)
+            history, pred, acc_train, acc_test = NN(neurons, 30, Xtrainlist[i], Y_train,
                                                     Xtest_list[i], Y_test, sample_size)
             ECM.append(mean_squared_error(Y_test, pred))
             EAM.append(mean_absolute_error(Y_test, pred))
-        print(':ECM: %.4f' % (np.mean(ECM)))
-        print(':EAM: %.4f' % (np.mean(EAM)))
+        print(':ECM: ', ECM)
+        print(':EAM: ', EAM)
+        print(':ECM avg: ', np.mean(ECM))
+        print(':EAM avg: ', np.mean(EAM))
 
-
+def Join_DF_RnT(*args):
+    output = copy(args[0])
+    for i in range(1, len(args)):
+        output['tmed'+str(i)] = args[i]['tmed']
+    return output
