@@ -38,4 +38,4 @@ for i in range(len(DF_list)):
 	importances = np.sort(clf.feature_importances_)
 	print("##########", arr_str[i], "##########\n")
 	for j in range(len(importances)):
-		print(var[j], '\n', importances[j], "\n")
+		print(var[j], '\n', round(importances[j], 2)*100, " %\n")
