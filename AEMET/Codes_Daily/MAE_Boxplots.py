@@ -20,14 +20,14 @@ EAM_RnT_HSC = [8.281530583158453, 8.28206115073346, 8.177005159093978, 8.0525655
 X = [EAM_Rn, EAM_RnT_BCN, EAM_RnT_PMP, EAM_RnT_ZGZ, EAM_RnT_HSC]
 lbl = ['Rn', 'Rn+T BCN', 'Rn+T PMP', 'Rn+T ZGZ', 'Rn+T HSC']
 fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 6))
-bplot = ax.boxplot(X, sym='+', labels=lbl, notch=True, 
+bplot = ax.boxplot(X, sym='+', labels=lbl, notch=True, patch_artist=True,
                    medianprops=dict(linestyle='-', linewidth=1.4, color='k'))
 plt.grid()
 plt.ylim([7.8, 9.4])
 plt.ylabel('$MAE\ (Bq \cdot m^{-3})$')
-# colors = ['#1f77b4', 'yellow', '#2ca02c', 'red', 'darkviolet']
-# for patch, color in zip(bplot['boxes'], colors):
-#     patch.set_facecolor(color)
+colors = ['dimgray']*5
+for patch, color in zip(bplot['boxes'], colors):
+    patch.set_facecolor(color)
 fig.savefig('../Figures/CNN/MAE_Boxplot_wcolor.eps', dpi=300)
 
 # Couples:
@@ -41,14 +41,14 @@ X = [EAM_Rn, EAM_RnT_BCN_PMP, EAM_RnT_BCN_HSC, EAM_RnT_BCN_ZGZ, EAM_RnT_PMP_HSC,
 lbl = ['Rn', 'Rn+T \nBCN / PMP', 'Rn+T \nBCN / HSC', 'Rn+T \nBCN / ZGZ', 'Rn+T \nPMP / HSC', 'Rn+T \nPMP / ZGZ',
  'Rn+T \nHSC / ZGZ']
 fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 6))
-bplot = ax.boxplot(X, sym='+', labels=lbl, notch=True,
+bplot = ax.boxplot(X, sym='+', labels=lbl, notch=True, patch_artist=True,
                    medianprops=dict(linestyle='-', linewidth=1.4, color='k'))
 plt.ylabel('$MAE\ (Bq \cdot m^{-3})$')
 plt.grid()
 plt.ylim([7.8, 9.4])
-# colors = ['#1f77b4', 'yellow', '#2ca02c', 'red', 'darkviolet', 'darkgreen', 'dimgray']
-# for patch, color in zip(bplot['boxes'], colors):
-# 	patch.set_facecolor(color)
+colors = ['dimgray']*7
+for patch, color in zip(bplot['boxes'], colors):
+	patch.set_facecolor(color)
 fig.savefig('../Figures/CNN/MAE_Boxplot_Couples_wcolor.eps', dpi=300)
 #fig.savefig('../Figures/CNN/MAE_Boxplot_Couples.eps', dpi=300)
 #fig.savefig('../Figures/CNN/MAE_Boxplot_Couples.png', dpi=300)
@@ -60,14 +60,14 @@ EAM_RnT_PMP_HSC_ZGZ = [8.217519394894863, 8.210397801500685, 8.147792978489653, 
 X = [EAM_Rn, EAM_RnT_BCN_PMP_HSC, EAM_RnT_BCN_PMP_ZGZ, EAM_RnT_PMP_HSC_ZGZ]
 lbl = ['Rn', 'Rn+T \nBCN / PMP / HSC', 'Rn+T \nBCN / PMP / ZGZ', 'Rn+T \nPMP / HSC / ZGZ']
 fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 6))
-bplot = ax.boxplot(X, sym='+', labels=lbl, notch=True,
+bplot = ax.boxplot(X, sym='+', labels=lbl, notch=True, patch_artist=True,
                    medianprops=dict(linestyle='-', linewidth=1.4, color='k'))
 plt.ylabel('$MAE\ (Bq \cdot m^{-3})$')
 plt.grid()
 plt.ylim([7.8, 9.4])
-# colors = ['#1f77b4', 'yellow', '#2ca02c', 'red', 'darkviolet', 'darkgreen', 'dimgray']
-# for patch, color in zip(bplot['boxes'], colors):
-# 	patch.set_facecolor(color)
+colors = ['dimgray']*4
+for patch, color in zip(bplot['boxes'], colors):
+	patch.set_facecolor(color)
 fig.savefig('../Figures/CNN/MAE_Boxplot_Trios_wcolor.eps', dpi=300)
 #fig.savefig('../Figures/CNN/MAE_Boxplot_Couples.eps', dpi=300)
 #fig.savefig('../Figures/CNN/MAE_Boxplot_Couples.png', dpi=300)
@@ -78,14 +78,14 @@ EAM_RnT_BCN_PMP_HSC_ZGZ = [8.812288365465529, 8.286808338571102, 8.1461085461555
 X = [EAM_Rn, EAM_RnT_BCN_PMP_HSC_ZGZ]
 lbl = ['Rn', 'Rn+T \nBCN / PMP / HSC / ZGZ']
 fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 6))
-bplot = ax.boxplot(X, sym='+', labels=lbl, notch=True,
+bplot = ax.boxplot(X, sym='+', labels=lbl, notch=True, patch_artist=True,
                    medianprops=dict(linestyle='-', linewidth=1.4, color='k'))
 plt.ylabel('$MAE\ (Bq \cdot m^{-3})$')
 plt.grid()
 plt.ylim([7.8, 9.4])
-# colors = ['#1f77b4', 'yellow', '#2ca02c', 'red', 'darkviolet', 'darkgreen', 'dimgray']
-# for patch, color in zip(bplot['boxes'], colors):
-# 	patch.set_facecolor(color)
+colors = ['dimgray']
+for patch, color in zip(bplot['boxes'], colors):
+	patch.set_facecolor(color)
 fig.savefig('../Figures/CNN/MAE_Boxplot_All_wcolor.eps', dpi=300)
 #fig.savefig('../Figures/CNN/MAE_Boxplot_Couples.eps', dpi=300)
 #fig.savefig('../Figures/CNN/MAE_Boxplot_Couples.png', dpi=300)
