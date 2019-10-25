@@ -65,6 +65,22 @@ def fill_arima_per_month(DF):
         DF[col] = DFavg[col].fillna(DF[DF[col].isnull()]['ARIMA_' + col])
         DF = DF.drop(['ARIMA_' + col], axis=1)
     return DF
+
+def fill_arima(DF, cols):
+    import pandas as pd
+    import numpy as np
+    from statsmodels.tsa.arima_model import ARIMA
+    from sklearn.metrics import mean_squared_error
+    DF_avg = fill_avg_per_month(DF)
+    DF_avg['fecha'] = pd.to_datetime(DF_avg['fecha'])
+    for col in cols:
+        model = ARIMA(endog=DF_avg[col], order=(3, 0, 1), dates=DF_avg['fecha'], freq='D')
+        results = model.fit()
+        print('MSE ARIMA {}: '.format(col), mean_squared_error(DF_avg[col].values, results.fittedvalues))
+        DF['ARIMA_' + col] = results.fittedvalues
+        DF[col] = DF_avg[col].fillna(DF[DF[col].isnull()]['ARIMA_' + col])
+        out = DF.drop(['ARIMA_' + col], axis=1)
+    return out
         
 def avg_per_weeks(DF):
     import pandas as pd
@@ -79,7 +95,7 @@ def Rn_Clima_plot(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel='',
     plt.rcParams['xtick.labelsize']=13
     plt.rcParams['ytick.labelsize']=13
     for i in range(len(DF_list)):
-        fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(14, 6), dpi=100)
+        fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(14, 6), dpi=300)
         xaxis = ax.get_xaxis()
         ax.xaxis.set_major_locator(mdates.YearLocator())
         ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
