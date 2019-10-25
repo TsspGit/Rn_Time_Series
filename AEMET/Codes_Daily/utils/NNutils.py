@@ -51,6 +51,14 @@ def data_toCNN_format(DF_list, arr_str, fields, sample_size):
         output[arr_str[i]] = np.array([weekly_to3d[start:start+sample_size] for start in range(0, weekly_to3d.shape[0]-sample_size+1)])
     return output
 
+def data_toCNN_format_v2(DF_list, arr_str, fields, sample_size, pdatalags):
+    output = {}
+    for i in range(len(DF_list)):
+        weekly_to3d = DF_list[i][fields].values
+        output[arr_str[i]] = np.array([pdatalags[start:start+sample_size] for start in range(0, pdatalags.shape[0]-sample_size)])
+    return output
+
+
 def train_test_split(X, test_size):
     X_train, X_test = X[:-test_size], X[-test_size:]
     return X_train, X_test
@@ -78,13 +86,29 @@ def NN(neurons, nep, X_train, Y_train, X_test, Y_test, sample_size, v=0, btch_si
         save_NN(model)
     return history, pred, acc_train, acc_test
 
+def build_pdata(DF_list, DF, nlags, fields):
+    names=list()
+    out = []
+    for city in DF_list:
+        pdata = pd.DataFrame()
+        pdatamdnRnA = pd.DataFrame()
+        for i in range(nlags, -1, -1):
+            # Add the new lagged column at the end of the dataframe. In inverse order.
+            pdata = pd.concat([pdata, city[fields].shift(i).reset_index(drop=True)], axis=1)
+            pdatamdnRnA = pd.concat([pdatamdnRnA, DF['mdnRnA'].shift(i).reset_index(drop=True)], axis=1)
+            names += str(i) # store this index for naming the columns of dataframe
+            pdatalags = np.asarray(pdata[nlags:])
+            pdatamdnRnAlags = np.asarray(pdatamdnRnA[nlags:])
+        out.append(pdata)
+    return out, pdatamdnRnAlags
+
 def NN_v2(neurons, nep, X_train, Y_train, X_test, Y_test, sample_size, v=0, btch_size=10, save=False):
     model = Sequential()
     model.add(Conv1D(filters=neurons[0], kernel_size=3, activation='relu', input_shape=X_train.shape[1:]))
     model.add(Conv1D(filters=neurons[1], kernel_size=3, activation='relu'))
     model.add(Flatten())
     model.add(Dropout(0.4))
-    model.add(Dense(int(neurons[0]/2), activation='linear'))
+    #model.add(Dense(int(neurons[0]/2), activation='linear'))
     model.add(Dense(int(neurons[1]/2), activation='linear'))
     model.add(Dense(Y_train.shape[1], activation='linear'))
     model.compile(loss="mae", optimizer="adam", metrics=["acc"])
@@ -229,6 +253,21 @@ def show_errors(neurons, Xtrainlist, Y_train, Xtest_list, Y_test, arr_str, itera
         print(':EAM: ', EAM)
         print(':ECM avg: ', np.mean(ECM))
         print(':EAM avg: ', np.mean(EAM))
+        
+def show_errors_v2(neurons, Xtrainlist, Y_train, Xtest_list, Y_test, arr_str, iterations, sample_size, DF_mdnRnA):
+    for i in range(len(Xtrainlist)):
+        print('\n\n#########\n', arr_str[i], '\n########\n\n')
+        ECM = []
+        EAM = []
+        for it in range(iterations):
+            #print('Iteration ', it)
+            history, pred, acc_train, acc_test, model = NN_v2(neurons, 45, Xtrainlist[i], Y_train, Xtest_list[i], Y_test, sample_size)
+            predmaxs, predmins, predavgs = extract_maxs_mins_avgs(pred)
+            Y_test_error = DF_mdnRnA[DF_mdnRnA['dates'] > '2017-08-06']['mdnRnA']
+            ECM.append(mean_squared_error(Y_test_error, predavgs))
+            EAM.append(mean_absolute_error(Y_test_error, predavgs))
+        print('ECM_'+arr_str[i]+' = ', ECM)
+        print('EAM_'+arr_str[i]+' = ', EAM)
 
 def Join_DF_RnT(*args):
     output = copy(args[0])
