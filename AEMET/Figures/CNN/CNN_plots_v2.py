@@ -50,7 +50,7 @@ def plot_fill_errors(data, predmins, predmaxs, predavgs, errors, startday, start
     ax.xaxis.set_minor_locator(mdates.MonthLocator())
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
     ax.fill_between(pd.date_range(startdaypred, periods=len(predmins), freq='W')[:-5], predmins[:-5], predmaxs[:-5],
-                    facecolor='g')
+                    facecolor='dimgray')
     ax.plot(pd.date_range(startday, periods=len(data), freq='W')[:-5], data[:-5], 'k') 
     ax.set_xlabel('Dates')
     ax.set_ylabel(r'$^{222}$Rn ($Bq\cdot m^{-3}$)', fontsize=16)
@@ -64,13 +64,14 @@ def plot_fill_errors(data, predmins, predmaxs, predavgs, errors, startday, start
     axins.xaxis.set_minor_locator(mdates.MonthLocator())
     axins.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
     axins.fill_between(pd.date_range(startdaypred, periods=len(predmins), freq='W')[:-5], predmins[:-5], predmaxs[:-5],
-                       facecolor='g')
+                       facecolor='dimgray')
     axins.plot(pd.date_range(startday, periods=len(data), freq='W')[:-5], data[:-5], 'k') 
     axins.set_xlim('2017-08-15', '2019-06-24')
     axins.set_ylim(50, 110)
     axins.set_yticks([60, 80, 100])
     axins.set_title('a)', loc='right', x=0.98, y=0.85)
     axins.grid()
+    axins.set_xticks([])
 
     axins2 = zoomed_inset_axes(ax, 1.7, loc='lower left', bbox_to_anchor=(673,97))
     axins2.xaxis.set_major_locator(mdates.YearLocator())
