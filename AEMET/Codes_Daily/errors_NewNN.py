@@ -57,8 +57,8 @@ Y_train,Y_test = Y[:-test_size], Y[-test_size:]
 neuron = [256, 128]
 ECM = []
 EAM = []
-for it in range(2):
-    history, pred, acc_train, acc_test, model = NN_v2(neuron, 45, X_train, Y_train, X_test, Y_test, sample_size)
+for it in range(25):
+    history, pred, acc_train, acc_test, model = NN_v2(neuron, 80, X_train, Y_train, X_test, Y_test, sample_size)
     predmaxs, predmins, predavgs = extract_maxs_mins_avgs(pred)
     Y_test_error = mdnRnA[sample_size:]
     Y_test_error = DF[DF['dates'] > '2017-08-06']['mdnRnA']
