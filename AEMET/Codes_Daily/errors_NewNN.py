@@ -54,7 +54,7 @@ Y = pdatamdnRnAlags[sample_size:]
 test_size = int(0.3*len(mdnRnA))
 X_train,X_test = X[:-test_size], X[-test_size:]
 Y_train,Y_test = Y[:-test_size], Y[-test_size:]
-neuron = [256, 128]
+neuron = [128, 64]
 ECM = []
 EAM = []
 for it in range(25):
@@ -103,6 +103,7 @@ Ytrain, Ytest = Y[:-test_size], Y[-test_size:]
 ## Predict
 Xtrainlist = [Xtrain_BCN, Xtrain_PMP, Xtrain_HSC, Xtrain_ZGZ]
 Xtestlist = [Xtest_BCN, Xtest_PMP, Xtest_ZGZ, Xtest_HSC]
+neuron = [256, 128]
 show_errors_v2(neuron, Xtrainlist, Ytrain, Xtestlist, Ytest, arr_str, iterations=25, sample_size=sample_size, DF_mdnRnA=DF)
 
 
