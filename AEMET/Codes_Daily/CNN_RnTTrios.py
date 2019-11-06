@@ -45,7 +45,7 @@ Y = mdnRnA[sample_size:]
 Ytrain, Ytest = Y[:-test_size], Y[-test_size:]
 
 ###########################################################
-#                  Trios of cities                      #
+#                  Trios of cities                        #
 ###########################################################
 BCN_PMP_HSC_scaled = Join_DF_RnT(BCN_scaled, PMP_scaled, HSC_scaled)
 BCN_PMP_ZGZ_scaled = Join_DF_RnT(BCN_scaled, PMP_scaled, ZGZ_scaled)

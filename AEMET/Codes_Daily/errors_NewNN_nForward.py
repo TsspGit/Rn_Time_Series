@@ -1,5 +1,6 @@
 ''' RNN Bidireccional en Keras '''
 __author_ = '@Tssp'
+import sys as sys
 import numpy as np
 import matplotlib.pyplot as plt
 from keras.models import Sequential
@@ -21,7 +22,8 @@ plt.rcParams['axes.titlesize']=16
 #                  Only Rn                                #
 ###########################################################
 mdnRnA = np.loadtxt('../../mdnRnA.txt', delimiter=',')
-newValuesReal = np.loadtxt('../../mdnRnA_validation.txt', delimiter=',')
+forward = int(sys.argv[1])
+newValuesReal = np.loadtxt('../../mdnRnA_validation.txt', delimiter=',')[:forward]
 nlags= len(newValuesReal)-1
 startday = pd.datetime(2013, 7, 1)
 dates = pd.date_range(startday, periods=len(mdnRnA), freq='W')
@@ -66,7 +68,6 @@ for it in range(25):
 print('ECMRn = ', ECM)
 print('EAMRn = ', EAM)
 
-
 ###########################################################
 #                   Independent Cities                    #
 ###########################################################
@@ -99,7 +100,6 @@ Xtrain_PMP, Xtest_PMP = train_test_split(Xt_PMP, test_size)
 Xtrain_HSC, Xtest_HSC = train_test_split(Xt_HSC, test_size)
 Xtrain_ZGZ, Xtest_ZGZ = train_test_split(Xt_ZGZ, test_size)
 Ytrain, Ytest = Y[:-test_size], Y[-test_size:]
-## Predict
 Xtrainlist = [Xtrain_BCN, Xtrain_PMP, Xtrain_HSC, Xtrain_ZGZ]
 Xtestlist = [Xtest_BCN, Xtest_PMP, Xtest_ZGZ, Xtest_HSC]
 neuron = [256, 128]

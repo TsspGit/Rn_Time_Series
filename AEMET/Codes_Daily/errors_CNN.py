@@ -59,10 +59,13 @@ for it in range(25):
                                             X_test=Xtest, Y_test=Ytest, sample_size=sample_size)
     ECM.append(mean_squared_error(Ytest, pred))
     EAM.append(mean_absolute_error(Ytest, pred))
-print(':ECM: %.4f' % (np.mean(ECM)))
-print(':EAM: %.4f' % (np.mean(EAM)))
+print(':ECM: ', ECM)
+print(':EAM: ', EAM)
+print(':ECM avg: ', np.mean(ECM))
+print(':EAM avg: ', np.mean(EAM))
 
 #Rn + Temperature
+print('\n\n#########\n Radon + Temperature \n########\n\n')
 Xt = data_toCNN_format(DFscaled_list, arr_str, ['tmed', 'mdnRnA'], sample_size)
 Xt_BCN = Xt['BCN']
 Xt_PMP = Xt['PMP']
@@ -78,6 +81,7 @@ Xtestlist = [Xtest_BCN, Xtest_PMP, Xtest_ZGZ, Xtest_HSC]
 show_errors([64, 32], Xtrainlist, Ytrain, Xtestlist, Ytest, arr_str, iterations=25, sample_size=sample_size)
 
 #Rn + Preassure
+print('\n\n#########\n Radon + Preassure \n########\n\n')
 Xp = data_toCNN_format(DFscaled_list, arr_str, ['presmed', 'mdnRnA'], sample_size)
 Xp_BCN = Xp['BCN']
 Xp_PMP = Xp['PMP']
@@ -93,6 +97,7 @@ Xtestlist = [Xtest_BCN, Xtest_PMP, Xtest_ZGZ, Xtest_HSC]
 show_errors([64, 32], Xtrainlist, Ytrain, Xtestlist, Ytest, arr_str, iterations=25, sample_size=sample_size)
 
 # Rn + wind velocity
+print('\n\n#########\n Radon + Wind Velocity \n########\n\n')
 Xv = data_toCNN_format(DFscaled_list, arr_str, ['velmedia', 'mdnRnA'], sample_size)
 Xv_BCN = Xv['BCN']
 Xv_PMP = Xv['PMP']

@@ -254,6 +254,7 @@ def show_errors(neurons, Xtrainlist, Y_train, Xtest_list, Y_test, arr_str, itera
         
 def show_errors_v2(neurons, Xtrainlist, Y_train, Xtest_list, Y_test, arr_str, iterations, sample_size, DF_mdnRnA):
     for i in range(len(Xtrainlist)):
+
         print('\n\n#########\n', arr_str[i], '\n########\n\n')
         ECM = []
         EAM = []
@@ -261,7 +262,7 @@ def show_errors_v2(neurons, Xtrainlist, Y_train, Xtest_list, Y_test, arr_str, it
             #print('Iteration ', it)
             history, pred, acc_train, acc_test, model = NN_v2(neurons, 90, Xtrainlist[i], Y_train, Xtest_list[i], Y_test, sample_size)
             predmaxs, predmins, predavgs = extract_maxs_mins_avgs(pred)
-            Y_test_error = DF_mdnRnA[DF_mdnRnA['dates'] > '2017-08-06']['mdnRnA']
+            Y_test_error = DF_mdnRnA['mdnRnA'][-len(predavgs):]
             ECM.append(mean_squared_error(Y_test_error, predavgs))
             EAM.append(mean_absolute_error(Y_test_error, predavgs))
         print('ECM_'+arr_str[i]+' = ', ECM)

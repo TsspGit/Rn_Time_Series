@@ -28,7 +28,7 @@ for city in list_cities:
                             usecols=['fecha', 'tmed', 'presmed', 'velmedia'])
     weekly[city + '_avg'] = pd.read_csv(f'../Data/Daily/{city}/{city}_avg_weekly.csv',
                                      usecols=['fecha', 'tmed', 'presmed', 'velmedia'])
-    weekly[city + '_arima'] = pd.read_csv(f'../Data/Daily/{city}/{city}_arima_weekly.csv',
+    weekly[city + '_arima'] = pd.read_csv(f'../Data/Daily/{city}/{city}_arima.csv',
                                      usecols=['fecha', 'tmed', 'presmed', 'velmedia'])
     
 # Load Rn:

@@ -42,7 +42,7 @@ ZGZ_scaled = weekly_scaled['ZGZ']
 DFscaled_list = [BCN_scaled, PMP_scaled, ZGZ_scaled, HSC_scaled]
 
 # Only Rn
-sample_size = 3
+sample_size = 4
 neuron = [64, 32]
 test_size=int(0.3 * len(mdnRnA))
 X = np.atleast_3d(np.array([mdnRnA[start:start + sample_size] for start in range(0, mdnRnA.shape[0]-sample_size)]))
@@ -114,7 +114,7 @@ Xtrain_PMP, Xtest_PMP = train_test_split(Xt_PMP, test_size)
 Xtrain_HSC, Xtest_HSC = train_test_split(Xt_HSC, test_size)
 Xtrain_ZGZ, Xtest_ZGZ = train_test_split(Xt_ZGZ, test_size)
 ## Predict
-history, pred, acc_train, acc_test = NN(neuron, nep=30, X_train=Xtrain_PMP, Y_train=Ytrain, X_test=Xtest_PMP, Y_test=Ytest, sample_size=sample_size)
+history, pred, acc_train, acc_test = NN(neuron, nep=30, X_train=Xtrain_PMP, Y_train=Ytrain, X_test=Xtest_PMP, Y_test=Ytest, sample_size=sample_size, save=True)
 
 ## Errors
 testScoreECM = mean_squared_error(Ytest, pred)
