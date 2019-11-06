@@ -142,6 +142,7 @@ def plot_forecast(data, startday, pred, startdaypred):
     ax.plot(pd.date_range(startday, periods=len(data), freq='W')[:-5], data[:-5], 'k') 
     ax.plot(pd.date_range(startdaypred, periods=len(pred), freq='W')[:-5], pred[:-5],
             linewidth=2, linestyle='-',color='crimson')
+
     plt.xlabel('Dates', fontsize=16)
     ax.legend(['Data', 'CNN (Rn + T)'], loc='upper left')
     plt.ylim([30, 140])
@@ -253,7 +254,8 @@ def show_errors(neurons, Xtrainlist, Y_train, Xtest_list, Y_test, arr_str, itera
         
 def show_errors_v2(neurons, Xtrainlist, Y_train, Xtest_list, Y_test, arr_str, iterations, sample_size, DF_mdnRnA):
     for i in range(len(Xtrainlist)):
-        #print('\n\n#########\n', arr_str[i], '\n########\n\n')
+
+        print('\n\n#########\n', arr_str[i], '\n########\n\n')
         ECM = []
         EAM = []
         for it in range(iterations):

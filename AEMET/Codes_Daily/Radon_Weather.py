@@ -7,8 +7,8 @@ from utils.aemepy import Rn_Clima_subplots, Rn_Clima_plot
 from scipy.stats.stats import pearsonr
 plt.rc('text',usetex=True)
 plt.rc('font',family='serif')
-plt.rcParams['xtick.labelsize']=12
-plt.rcParams['ytick.labelsize']=12
+plt.rcParams['xtick.labelsize']=13
+plt.rcParams['ytick.labelsize']=13
 
 # Correlation print function:
 def print_corr(DF_list, field):
