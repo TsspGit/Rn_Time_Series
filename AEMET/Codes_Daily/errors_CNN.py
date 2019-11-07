@@ -54,7 +54,7 @@ ECM = []
 EAM = []
 print('\n\n#########\n Only Radon \n########\n\n')
 for it in range(25):
-    #print('Iteration ', it)
+    print('Iteration ', it)
     history, pred, acc_train, acc_test = NN([64, 32], nep=35, X_train=Xtrain, Y_train=Ytrain,
                                             X_test=Xtest, Y_test=Ytest, sample_size=sample_size)
     ECM.append(mean_squared_error(Ytest, pred))

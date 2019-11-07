@@ -7,8 +7,8 @@ from utils.aemepy import Rn_Clima_subplots, Rn_Clima_plot
 from scipy.stats.stats import pearsonr
 plt.rc('text',usetex=True)
 plt.rc('font',family='serif')
-plt.rcParams['xtick.labelsize']=12
-plt.rcParams['ytick.labelsize']=12
+plt.rcParams['xtick.labelsize']=13
+plt.rcParams['ytick.labelsize']=13
 
 # Correlation print function:
 def print_corr(DF_list, field):
@@ -28,7 +28,7 @@ for city in list_cities:
                             usecols=['fecha', 'tmed', 'presmed', 'velmedia'])
     weekly[city + '_avg'] = pd.read_csv(f'../Data/Daily/{city}/{city}_avg_weekly.csv',
                                      usecols=['fecha', 'tmed', 'presmed', 'velmedia'])
-    weekly[city + '_arima'] = pd.read_csv(f'../Data/Daily/{city}/{city}_avg_weekly.csv',
+    weekly[city + '_arima'] = pd.read_csv(f'../Data/Daily/{city}/{city}_arima.csv',
                                      usecols=['fecha', 'tmed', 'presmed', 'velmedia'])
     
 # Load Rn:

@@ -253,7 +253,7 @@ def show_errors(neurons, Xtrainlist, Y_train, Xtest_list, Y_test, arr_str, itera
         
 def show_errors_v2(neurons, Xtrainlist, Y_train, Xtest_list, Y_test, arr_str, iterations, sample_size, DF_mdnRnA):
     for i in range(len(Xtrainlist)):
-        #print('\n\n#########\n', arr_str[i], '\n########\n\n')
+        print('\n\n#########\n', arr_str[i], '\n########\n\n')
         ECM = []
         EAM = []
         for it in range(iterations):
