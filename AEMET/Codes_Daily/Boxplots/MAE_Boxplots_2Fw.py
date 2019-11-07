@@ -28,7 +28,7 @@ plt.ylabel('$MAE\ (Bq \cdot m^{-3})$')
 colors = ['dimgray']*5
 for patch, color in zip(bplot['boxes'], colors):
     patch.set_facecolor(color)
-fig.savefig('../Figures/CNN/MAE_Boxplot_wcolor_2Fw_v3.eps', dpi=300)
+fig.savefig('../../Figures/Boxplots/MAE_Boxplot_wcolor_2Fw_v3.eps', dpi=300)
 
 # Couples:
 EAM_BCN_PMP =  [6.366667255602385, 6.462653832686575, 7.076113088507402, 7.107937541760896, 8.643941658421566, 5.307147337260999, 6.928710535952919, 6.550348382247122, 8.592346352025082, 6.408802875719572, 8.010829965691817, 6.3336647033691404, 6.184359419973273, 5.506942347476357, 7.095329485441509, 8.126758173892373, 6.171174501117907, 6.144511252955387, 6.801090320787932, 6.75447190937243, 6.375103478682669, 7.4471898932206, 6.34211570338199, 6.201171915154708, 5.5956067135459495]
@@ -49,9 +49,9 @@ plt.grid()
 colors = ['dimgray']*7
 for patch, color in zip(bplot['boxes'], colors):
 	patch.set_facecolor(color)
-fig.savefig('../Figures/CNN/MAE_Boxplot_Couples_wcolor_2Fw_v3.eps', dpi=300)
-#fig.savefig('../Figures/CNN/MAE_Boxplot_Couples.eps', dpi=300)
-#fig.savefig('../Figures/CNN/MAE_Boxplot_Couples.png', dpi=300)
+fig.savefig('../../Figures/Boxplots/MAE_Boxplot_Couples_wcolor_2Fw_v3.eps', dpi=300)
+#fig.savefig('../../Figures/Boxplots/MAE_Boxplot_Couples_2Fw.eps', dpi=300)
+#fig.savefig('../../Figures/Boxplots/../../Figures/BoxplotsMAE_Boxplot_Couples_2Fw.png', dpi=300)
 
 # Trios:
 EAM_BCN_PMP_HSC =  [6.460197368421053, 5.987372709575452, 5.755552633185136, 6.180146709241365, 7.052499510112562, 6.9302521555047285, 6.55962058619449, 6.100049550909745, 6.038586787173623, 5.754265755101254, 6.3587395115902545, 6.505189714933697, 8.150124238666736, 7.012060065018503, 7.175489405581826, 8.21530552914268, 6.931560315583882, 6.478191857588919, 6.189350369102076, 6.255678076493113, 7.211051579525596, 5.522819478888261, 6.789981520803351, 7.393506823087994, 8.019290161132812]
@@ -68,6 +68,6 @@ plt.grid()
 colors = ['dimgray']*4
 for patch, color in zip(bplot['boxes'], colors):
 	patch.set_facecolor(color)
-fig.savefig('../Figures/CNN/MAE_Boxplot_Trios_wcolor_2Fw_v3.eps', dpi=300)
-#fig.savefig('../Figures/CNN/MAE_Boxplot_Couples.eps', dpi=300)
-#fig.savefig('../Figures/CNN/MAE_Boxplot_Couples.png', dpi=300)
+fig.savefig('../../Figures/Boxplots/MAE_Boxplot_Trios_wcolor_2Fw_v3.eps', dpi=300)
+#fig.savefig('../../Figures/Boxplots/MAE_Boxplot_Trios_2Fw.eps', dpi=300)
+#fig.savefig('../../Figures/Boxplots/MAE_Boxplot_Trios_2Fw.png', dpi=300)

@@ -28,7 +28,7 @@ plt.ylabel('$MAE\ (Bq \cdot m^{-3})$')
 colors = ['dimgray']*5
 for patch, color in zip(bplot['boxes'], colors):
     patch.set_facecolor(color)
-fig.savefig('../Figures/CNN/MAE_Boxplot_wcolor_v3.eps', dpi=300)
+fig.savefig('../../Figures/Boxplots/MAE_Boxplot_wcolor_v3.eps', dpi=300)
 
 # Couples:
 EAM_BCN_PMP =  [6.987331614774816, 6.299062429689894, 6.802035986208448, 5.99146562464097, 6.299708721684475, 6.051922181073357, 6.348068012910731, 6.588365255617628, 7.036027983123181, 5.825197631237554, 6.805111417583391, 5.976502661611519, 6.04381737054563, 5.750513263777191, 6.001487619736615, 6.17589677548876, 6.324387980442421, 6.3207314435173485, 6.558412477081897, 6.118624406702378, 6.215453877168543, 6.087002099729052, 5.976442524031097, 6.115781896254596, 6.850981918035769]
@@ -49,9 +49,9 @@ plt.grid()
 colors = ['dimgray']*7
 for patch, color in zip(bplot['boxes'], colors):
 	patch.set_facecolor(color)
-fig.savefig('../Figures/CNN/MAE_Boxplot_Couples_wcolor_v3.eps', dpi=300)
-#fig.savefig('../Figures/CNN/MAE_Boxplot_Couples.eps', dpi=300)
-#fig.savefig('../Figures/CNN/MAE_Boxplot_Couples.png', dpi=300)
+fig.savefig('../../Figures/Boxplots/MAE_Boxplot_Couples_wcolor_v3.eps', dpi=300)
+#fig.savefig('../../Figures/Boxplots/MAE_Boxplot_Couples.eps', dpi=300)
+#fig.savefig('../../Figures/Boxplots/MAE_Boxplot_Couples.png', dpi=300)
 
 # Trios:
 EAM_BCN_PMP_HSC =  [5.5787093966614965, 5.8915368622424555, 5.762881671681123, 5.794120414584291, 6.288819331748813, 7.268004997103822, 6.323642880308862, 5.856451670328776, 5.669677958768957, 7.420601265103209, 5.7030554004743985, 6.4485986746993715, 6.017859477622836, 6.40034320307713, 5.894256292604933, 6.774822758693321, 5.9856926039153455, 6.526359146716548, 6.096694273107192, 5.5795408510694315, 6.393521252800436, 6.877454907286401, 7.029939053105373, 6.240965712304209, 8.396675857843137]
@@ -68,6 +68,6 @@ plt.grid()
 colors = ['dimgray']*4
 for patch, color in zip(bplot['boxes'], colors):
 	patch.set_facecolor(color)
-fig.savefig('../Figures/CNN/MAE_Boxplot_Trios_wcolor_v3.eps', dpi=300)
-#fig.savefig('../Figures/CNN/MAE_Boxplot_Couples.eps', dpi=300)
-#fig.savefig('../Figures/CNN/MAE_Boxplot_Couples.png', dpi=300)
+fig.savefig('../../Figures/Boxplots/MAE_Boxplot_Trios_wcolor_v3.eps', dpi=300)
+#fig.savefig('../../Figures/Boxplots/MAE_Boxplot_Couples.eps', dpi=300)
+#fig.savefig('../../Figures/Boxplots/MAE_Boxplot_Couples.png', dpi=300)
