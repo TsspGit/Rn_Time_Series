@@ -29,7 +29,7 @@ plt.ylabel('loss', fontsize=14)
 plt.xlabel('epoch', fontsize=14)
 plt.legend(['train', 'test'], loc='upper right')
 plt.tight_layout()
-fig.savefig('./CNN_Loss_RnT_PMP_{}_{}_wcolor.eps'.format(neuron[0], neuron[1]))
+#fig.savefig('./CNN_Loss_RnT_PMP_{}_{}_wcolor.eps'.format(neuron[0], neuron[1]))
 
 ## Plot 2:
 preds = np.loadtxt('./CNN_RnT_PMP_{}_{}_v2.txt'.format(neuron[0], neuron[1]), delimiter=',')
