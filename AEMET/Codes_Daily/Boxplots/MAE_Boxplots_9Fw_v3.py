@@ -5,10 +5,10 @@ import matplotlib.pyplot as plt
 import pandas as pd
 plt.rc('text',usetex=True)
 plt.rc('font',family='serif')
-plt.rcParams['xtick.labelsize']=13
-plt.rcParams['ytick.labelsize']=13
-plt.rcParams['axes.labelsize']=16
-plt.rcParams['axes.titlesize']=16
+plt.rcParams['xtick.labelsize']=16
+plt.rcParams['ytick.labelsize']=16
+plt.rcParams['axes.labelsize']=18
+plt.rcParams['axes.titlesize']=18
 
 # Read Data:
 EAMRn =  [5.5095901863247745, 7.251116472132066, 5.417940850351371, 5.188407823151233, 5.1568134158265355, 5.8572894451664945, 5.15846783507104, 6.714634390438304, 7.691727133358226, 5.608884437411439, 7.324657589781518, 6.187280355715284, 5.635231018066406, 6.386093251845416, 5.573163911408069, 5.954595154406977, 5.748712464874866, 5.010292950798483, 5.639649447272806, 6.012278874715169, 5.444472069833793, 5.070512472414503, 5.5035643110088275, 5.513911265952914, 5.684727612663718]
@@ -26,6 +26,7 @@ plt.grid()
 #plt.ylim([7.8, 9.4])
 plt.ylabel('$MAE\ (Bq \cdot m^{-3})$')
 colors = ['dimgray']*5
+plt.ylim([4.5, 9.2])
 for patch, color in zip(bplot['boxes'], colors):
     patch.set_facecolor(color)
 fig.savefig('../../Figures/Boxplots/MAE_Boxplot_wcolor_v3.eps', dpi=300)

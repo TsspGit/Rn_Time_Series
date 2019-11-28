@@ -5,10 +5,10 @@ import matplotlib.pyplot as plt
 import pandas as pd
 plt.rc('text',usetex=True)
 plt.rc('font',family='serif')
-plt.rcParams['xtick.labelsize']=13
-plt.rcParams['ytick.labelsize']=13
-plt.rcParams['axes.labelsize']=16
-plt.rcParams['axes.titlesize']=16
+plt.rcParams['xtick.labelsize']=16
+plt.rcParams['ytick.labelsize']=16
+plt.rcParams['axes.labelsize']=18
+plt.rcParams['axes.titlesize']=18
 
 def run(save=False):
 	# Read Data:
@@ -26,6 +26,7 @@ def run(save=False):
 	plt.grid()
 	plt.ylabel('$MAE\ (Bq \cdot m^{-3})$')
 	colors = ['dimgray']*5
+	plt.ylim([4.5, 9.2])
 	for patch, color in zip(bplot['boxes'], colors):
 	    patch.set_facecolor(color)
 	if save:
@@ -81,4 +82,4 @@ def run(save=False):
 	print(DF.describe())
 
 if __name__ == '__main__':
-	run()
+	run(True)
