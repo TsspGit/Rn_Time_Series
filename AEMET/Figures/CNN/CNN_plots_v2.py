@@ -8,10 +8,10 @@ from scipy.stats.stats import pearsonr
 from global_functions import read_datatxt
 plt.rc('text',usetex=True)
 plt.rc('font',family='serif')
-plt.rcParams['xtick.labelsize']=13
-plt.rcParams['ytick.labelsize']=13
-plt.rcParams['axes.labelsize']=16
-plt.rcParams['axes.titlesize']=16
+plt.rcParams['xtick.labelsize']=16
+plt.rcParams['ytick.labelsize']=16
+plt.rcParams['axes.labelsize']=18
+plt.rcParams['axes.titlesize']=18
 
 # Rn + T
 
@@ -53,7 +53,7 @@ def plot_fill_errors(data, predmins, predmaxs, predavgs, errors, startday, start
                     facecolor='dimgray')
     ax.plot(pd.date_range(startday, periods=len(data), freq='W')[:-5], data[:-5], 'k') 
     ax.set_xlabel('Dates')
-    ax.set_ylabel(r'$^{222}$Rn ($Bq\cdot m^{-3}$)', fontsize=16)
+    ax.set_ylabel(r'$^{222}$Rn ($Bq\cdot m^{-3}$)')
     ax.legend(['Data', 'CNN (Rn + T)'], loc='upper left')
     ax.set_ylim([30, 140])
     ax.grid()

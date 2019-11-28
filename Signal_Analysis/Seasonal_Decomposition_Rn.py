@@ -29,7 +29,7 @@ if len(sys.argv) == 2 and (bool(sys.argv[1]) == True or bool(sys.argv[1]) == Fal
 	def main(save_bool=bool(sys.argv[1])):
 		# Weekly data:
 
-		mdnRnA = glb.read_datatxt('/afs/ciemat.es/user/t/tomas/CIEMAT/Rn_Weekly_NN/mdnRnA.txt', ',')
+		mdnRnA = glb.read_datatxt('/afs/ciemat.es/user/t/tomas/CIEMAT/Rn_Time_Series/mdnRnA.txt', ',')
 		# Recording dates:
 
 		startday = pd.datetime(2013, 7, 1)
