@@ -28,7 +28,7 @@ for city in list_cities:
                             usecols=['fecha', 'tmed', 'presmed', 'velmedia'])
     weekly[city + '_avg'] = pd.read_csv(f'../Data/Daily/{city}/{city}_avg_weekly.csv',
                                      usecols=['fecha', 'tmed', 'presmed', 'velmedia'])
-    weekly[city + '_arima'] = pd.read_csv(f'../Data/Daily/{city}/{city}_arima.csv',
+    weekly[city + '_arima'] = pd.read_csv(f'../Data/Daily/{city}/{city}_arima_weekly.csv',
                                      usecols=['fecha', 'tmed', 'presmed', 'velmedia'])
     
 # Load Rn:
@@ -36,6 +36,9 @@ mdnRnA = np.loadtxt('../../mdnRnA.txt', delimiter=',')
 startday = pd.datetime(2013, 7, 1)
 dates = pd.date_range(startday, periods=len(mdnRnA), freq='W')
 assert len(mdnRnA) == len(weekly['BCN']['fecha'].values)
+assert len(mdnRnA) == len(weekly['NVR']['fecha'].values)
+assert len(mdnRnA) == len(weekly['HSC']['fecha'].values)
+assert len(mdnRnA) == len(weekly['ZGZ']['fecha'].values)
 
 
 ############################################################
@@ -69,8 +72,8 @@ Rn_Clima_subplots(DF_list, mdnRnA, dates, 'velmedia', arr_str, ylabel=r'\bar{V}\
                    v='V',
  save=True)
 
-## 1 plot per city:
-### Temperature:
+# 1 plot per city:
+## Temperature:
 Rn_Clima_plot(DF_list, mdnRnA, dates, 'tmed', arr_str, ylabel=r'\bar{T}\ (^o C)', c='#1f77b4', legend=r'\bar{T}',
                    v='T',
  save=True)
@@ -128,7 +131,7 @@ Rn_Clima_plot(DFavg_list, mdnRnA, dates, 'velmedia', arr_str, ylabel=r'\bar{V}\ 
 ############################################################
 BCN_arima = weekly['BCN_arima']
 BCN_arima['fecha'] = pd.to_datetime(BCN_arima['fecha'])
-NVR_arima = weekly['NVR_avg']
+NVR_arima = weekly['NVR_arima']
 NVR_arima['fecha'] = pd.to_datetime(NVR_arima['fecha'])
 HSC_arima = weekly['HSC_arima']
 HSC_arima['fecha'] = pd.to_datetime(HSC_arima['fecha'])
@@ -139,15 +142,15 @@ arrarima_str = ['BCN_arima', 'PMP_arima', 'ZGZ_arima', 'HSC_arima']
 
 ## 4 cities in a plot:
 ### Tempeature:
-plt.figure(31, figsize=(14, 10), dpi=300)
+plt.figure(31, figsize=(14, 10), dpi=200)
 Rn_Clima_subplots(DFarima_list, mdnRnA, dates, 'tmed', arr_str, ylabel=r'\bar{T}\ (^o C)', c='#1f77b4',legend=r'\bar{T}',
  v='Tarima', save=True)
 ### Preassure
-plt.figure(32, figsize=(14, 10), dpi=300)
+plt.figure(32, figsize=(14, 10), dpi=200)
 Rn_Clima_subplots(DFarima_list, mdnRnA, dates, 'presmed', arr_str, ylabel=r'\bar{P}\ (hPa)', c='#2ca02c',legend=r'\bar{P}',
  v='Parima', save=True)
 ### Wind velocity
-plt.figure(33, figsize=(14, 10), dpi=300)
+plt.figure(33, figsize=(14, 10), dpi=200)
 Rn_Clima_subplots(DFarima_list, mdnRnA, dates, 'velmedia', arr_str, ylabel=r'\bar{V}\ (km/s)', c='#d62728',legend=r'\bar{V}',
  v='Varima', save=True)
 

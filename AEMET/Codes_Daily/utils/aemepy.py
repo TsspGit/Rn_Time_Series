@@ -120,8 +120,8 @@ def Rn_Clima_subplots(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel
     import numpy as np
     import matplotlib.pyplot as plt
     import matplotlib.dates as mdates
-    plt.rcParams['xtick.labelsize']=13
-    plt.rcParams['ytick.labelsize']=13
+    plt.rcParams['xtick.labelsize']=16
+    plt.rcParams['ytick.labelsize']=16
     for i in range(len(DF_list)):
         ax = plt.subplot(2, 2, i+1)
         xaxis = ax.get_xaxis()
@@ -129,29 +129,29 @@ def Rn_Clima_subplots(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel
         ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
         # Rn
         ax.plot(dates, mdnRnA, 'k')
-        ax.set_ylabel('$^{222}$Rn($Bq \cdot m^{-3}$)', fontsize=16)
+        ax.set_ylabel('$^{222}$Rn($Bq \cdot m^{-3}$)', fontsize=18)
         # Climatology
         ax2 = ax.twinx()
         ax2.plot(DF_list[i][xcol].values, DF_list[i][ycol].values, alpha=1, color=c, marker='x', linestyle=':')
         plt.xlim([dates[0], dates[-1]])
-        plt.title('{}'.format(titles[i]), fontsize=16)
+        plt.title('{}'.format(titles[i]), fontsize=18)
 
         if i == 0:
-            ax.set_ylabel('$^{222}$Rn($Bq \cdot m^{-3}$)', fontsize=16)
+            ax.set_ylabel('$^{222}$Rn($Bq \cdot m^{-3}$)', fontsize=18)
             ax.set_xlabel('')
             ax2.set_xlabel('')
         if i == 1:
-            ax2.set_ylabel(r'${}$'.format(ylabel), fontsize=16, rotation=-90, labelpad=30)
+            ax2.set_ylabel(r'${}$'.format(ylabel), fontsize=18, rotation=-90, labelpad=30)
             ax.set_ylabel('')
             ax.set_xlabel('')
             ax2.set_xlabel('')
         elif i == 2:
-            ax.set_ylabel('$^{222}$Rn($Bq \cdot m^{-3}$)', fontsize=16)
+            ax.set_ylabel('$^{222}$Rn($Bq \cdot m^{-3}$)', fontsize=18)
             ax.set_xlabel(xlabel, fontsize=16)
         elif i == 3:
-            ax2.set_ylabel(r'${}$'.format(ylabel), fontsize=16, rotation=-90, labelpad=30)
+            ax2.set_ylabel(r'${}$'.format(ylabel), fontsize=18, rotation=-90, labelpad=30)
             ax.set_ylabel('')
-            ax.set_xlabel(xlabel, fontsize=16)
+            ax.set_xlabel(xlabel, fontsize=18)
         ax.legend(['$^{222}$Rn'], fontsize=14, loc='upper left')
         ax2.legend([r'${}$'.format(ylabel)], fontsize=14, loc='upper right')
         plt.tight_layout()
