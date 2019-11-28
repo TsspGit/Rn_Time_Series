@@ -12,7 +12,7 @@ from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 import matplotlib.dates as mdates
 from sklearn.ensemble import RandomForestRegressor
 from utils.NNutils import loadallDF
-plt.rcParams['xtick.labelsize']=24
+plt.rcParams['xtick.labelsize']=28
 plt.rcParams['ytick.labelsize']=20
 plt.rcParams['axes.labelsize']=24
 plt.rcParams['font.size']=18
