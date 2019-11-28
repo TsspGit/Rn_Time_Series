@@ -12,8 +12,9 @@ from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 import matplotlib.dates as mdates
 from sklearn.ensemble import RandomForestRegressor
 from utils.NNutils import loadallDF
-plt.rcParams['xtick.labelsize']=20
+plt.rcParams['xtick.labelsize']=24
 plt.rcParams['ytick.labelsize']=20
+plt.rcParams['axes.labelsize']=24
 plt.rcParams['font.size']=18
 plt.rcParams['xtick.major.pad']='8'
 plt.rc('text',usetex=True)
@@ -58,6 +59,6 @@ plt.xlim([-1, X.shape[1]])
 plt.ylim([0, 1])
 #plt.xlabel('Features')
 plt.ylabel('Relative Importance')
-plt.show()
 plt.savefig('../Figures/Variables_Importance.eps', dpi=100)
 plt.savefig('../Figures/Variables_Importance.png', dpi=100)
+plt.show()
