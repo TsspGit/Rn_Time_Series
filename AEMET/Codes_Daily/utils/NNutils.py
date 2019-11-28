@@ -4,10 +4,10 @@ __author__ = '@Tssp'
 
 import numpy as np
 import matplotlib.pyplot as plt
-# from keras.models import Sequential
-# from keras.layers import Dense, Dropout, Activation, Flatten, BatchNormalization
-# from keras.layers.convolutional import Conv1D, MaxPooling1D
-# from keras.models import model_from_json
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Activation, Flatten, BatchNormalization
+from keras.layers.convolutional import Conv1D, MaxPooling1D
+from keras.models import model_from_json
 import pandas as pd  
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error, mean_absolute_error
