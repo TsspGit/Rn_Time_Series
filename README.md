@@ -44,6 +44,10 @@ False: doesn't save the resulting plots
 
 6. **Radon_Weather.py** loads the weekly data per city and outputs several Radon - Weather_variable plots. 
 
+7. **errors_New_NN_nForward.py/.sh** is the final one. Takes into account even the number of future values to predict in each iteration for every combination of the cities and saves the output as a .log in *log* folder
+
+8. **Rn_Classify_Percentile.ipynb**, a classification example with the Radon data. We tried a classification problem between the data under the first quartile and the rest, but it went nowhere
+
 ### Codes_Monthly
 
 Follows the same logic than **Codes_Daily**, the difference is that here we access to the averages per month, and this is not useful for carry out our study.
