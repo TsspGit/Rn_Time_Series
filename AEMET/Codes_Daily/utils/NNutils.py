@@ -4,10 +4,6 @@ __author__ = '@Tssp'
 
 import numpy as np
 import matplotlib.pyplot as plt
-from keras.models import Sequential
-from keras.layers import Dense, Dropout, Activation, Flatten, BatchNormalization
-from keras.layers.convolutional import Conv1D, MaxPooling1D
-from keras.models import model_from_json
 import pandas as pd  
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error, mean_absolute_error
@@ -70,6 +66,10 @@ def save_NN(model):
     
     
 def NN(neurons, nep, X_train, Y_train, X_test, Y_test, sample_size, v=0, btch_size=10, save=False):
+    from keras.models import Sequential
+    from keras.layers import Dense, Dropout, Activation, Flatten, BatchNormalization
+    from keras.layers.convolutional import Conv1D, MaxPooling1D
+    from keras.models import model_from_json
     model = Sequential()
     model.add(Conv1D(filters=neurons[0], kernel_size=3, activation='relu', input_shape=X_train.shape[1:]))
     model.add(Flatten())
@@ -103,6 +103,10 @@ def build_pdata(DF_list, DF, nlags, fields):
     return out, pdatamdnRnAlags
 
 def NN_v2(neurons, nep, X_train, Y_train, X_test, Y_test, sample_size, v=0, btch_size=10, save=False):
+    from keras.models import Sequential
+    from keras.layers import Dense, Dropout, Activation, Flatten, BatchNormalization
+    from keras.layers.convolutional import Conv1D, MaxPooling1D
+    from keras.models import model_from_json
     model = Sequential()
     model.add(Conv1D(filters=int(neurons[0]), kernel_size=3, activation='relu', input_shape=X_train.shape[1:]))
     model.add(Conv1D(filters=int(neurons[1]), kernel_size=3, activation='relu'))
