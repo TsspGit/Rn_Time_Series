@@ -18,6 +18,8 @@ plt.rcParams['ytick.labelsize']=13
 plt.rcParams['axes.labelsize']=16
 plt.rcParams['axes.titlesize']=16
 
+# ¡Comment and discomment the Neural Network as you want! 
+
 ###########################################################
 #                  Only Rn                                #
 ###########################################################
@@ -56,11 +58,13 @@ Y = pdatamdnRnAlags[sample_size:]
 test_size = int(0.3*len(mdnRnA))
 X_train,X_test = X[:-test_size], X[-test_size:]
 Y_train,Y_test = Y[:-test_size], Y[-test_size:]
-neuron = [128, 64]
+neuronCNN = [128, 64]
+neuronANN = [64, 32]
 ECM = []
 EAM = []
 for it in range(25):
-    history, pred, acc_train, acc_test, model = NN_v2(neuron, 80, X_train, Y_train, X_test, Y_test, sample_size)
+    #history, pred, acc_train, acc_test, model = NN_v2(neuronCNN, 80, X_train, Y_train, X_test, Y_test, sample_size)
+    history, pred, acc_train, acc_test, model = ANN_v2(neuronANN, 40, X_train, Y_train, X_test, Y_test, sample_size)
     predmaxs, predmins, predavgs = extract_maxs_mins_avgs(pred)
     Y_test_error = mdnRnA[-len(predavgs):]
     ECM.append(mean_squared_error(Y_test_error, predavgs))
@@ -102,9 +106,9 @@ Xtrain_ZGZ, Xtest_ZGZ = train_test_split(Xt_ZGZ, test_size)
 Ytrain, Ytest = Y[:-test_size], Y[-test_size:]
 Xtrainlist = [Xtrain_BCN, Xtrain_PMP, Xtrain_HSC, Xtrain_ZGZ]
 Xtestlist = [Xtest_BCN, Xtest_PMP, Xtest_ZGZ, Xtest_HSC]
-neuron = [256, 128]
-show_errors_v2(neuron, Xtrainlist, Ytrain, Xtestlist, Ytest, arr_str, iterations=25, sample_size=sample_size, DF_mdnRnA=DF)
-
+neuronCNN = [256, 128]
+#show_errors_v2(neuronCNN, Xtrainlist, Ytrain, Xtestlist, Ytest, arr_str, iterations=25, sample_size=sample_size, DF_mdnRnA=DF)
+show_errors_ANNv2(neuronCNN, Xtrainlist, Ytrain, Xtestlist, Ytest, arr_str, iterations=25, sample_size=sample_size, DF_mdnRnA=DF)
 
 ###########################################################
 #                  Couples of cities                      #
@@ -134,8 +138,8 @@ Xtrain_PMP_ZGZ, Xtest_PMP_ZGZ = train_test_split(Xt_PMP_ZGZ, test_size)
 Xtrain_HSC_ZGZ, Xtest_HSC_ZGZ = train_test_split(Xt_HSC_ZGZ, test_size)
 Xtrainlist = [Xtrain_BCN_PMP, Xtrain_BCN_HSC, Xtrain_BCN_ZGZ, Xtrain_PMP_HSC, Xtrain_PMP_ZGZ, Xtrain_HSC_ZGZ]
 Xtestlist = [Xtest_BCN_PMP, Xtest_BCN_HSC, Xtest_BCN_ZGZ, Xtest_PMP_HSC, Xtest_PMP_ZGZ, Xtest_HSC_ZGZ]
-show_errors_v2(neuron, Xtrainlist, Ytrain, Xtestlist, Ytest, arr_str_couples, iterations=25, sample_size=sample_size, DF_mdnRnA=DF)
-
+# show_errors_v2(neuronCNN, Xtrainlist, Ytrain, Xtestlist, Ytest, arr_str_couples, iterations=25, sample_size=sample_size, DF_mdnRnA=DF)
+show_errors_ANNv2(neuronCNN, Xtrainlist, Ytrain, Xtestlist, Ytest, arr_str_couples, iterations=25, sample_size=sample_size, DF_mdnRnA=DF)
 
 ###########################################################
 #                  Trios of cities                        #
@@ -155,4 +159,5 @@ Xtrain_BCN_PMP_ZGZ, Xtest_BCN_PMP_ZGZ = train_test_split(Xt_BCN_PMP_ZGZ, test_si
 Xtrain_PMP_HSC_ZGZ, Xtest_PMP_HSC_ZGZ = train_test_split(Xt_PMP_HSC_ZGZ, test_size)
 Xtrain_list = [Xtrain_BCN_PMP_HSC, Xtrain_BCN_PMP_ZGZ, Xtrain_PMP_HSC_ZGZ]
 Xtest_list = [Xtest_BCN_PMP_HSC, Xtest_BCN_PMP_ZGZ, Xtest_PMP_HSC_ZGZ]
-show_errors_v2(neuron, Xtrainlist, Ytrain, Xtestlist, Ytest, arr_str_trios, iterations=25, sample_size=sample_size, DF_mdnRnA=DF)
+# show_errors_v2(neuronCNN, Xtrainlist, Ytrain, Xtestlist, Ytest, arr_str_trios, iterations=25, sample_size=sample_size, DF_mdnRnA=DF)
+show_errors_ANNv2(neuronCNN, Xtrainlist, Ytrain, Xtestlist, Ytest, arr_str_trios, iterations=25, sample_size=sample_size, DF_mdnRnA=DF)
