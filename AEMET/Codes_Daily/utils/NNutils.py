@@ -4,6 +4,10 @@ __author__ = '@Tssp'
 
 import numpy as np
 import matplotlib.pyplot as plt
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Activation, Flatten, BatchNormalization
+from keras.layers.convolutional import Conv1D, MaxPooling1D
+from keras.models import model_from_json
 import pandas as pd  
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error, mean_absolute_error
@@ -40,6 +44,26 @@ def scaleallDF(DF_arr, arr_str):
         output[arr_str[i]]['dates'] = DF_arr[i]['dates']
     return output
 
+def scaleallDF(DF_arr, arr_str):
+    output = {}
+    outputscalers={}
+    for i in range(len(DF_arr)):
+        # Define de scalers and scale data
+        scalermdnRnA = MinMaxScaler(feature_range=(-1, 1))
+        scalerT = MinMaxScaler(feature_range=(-1, 1))
+        outputDF = pd.DataFrame()
+        mdnRnAscaled = DF_arr[i]['mdnRnA'].values.reshape(-1, 1)
+        Tscaled = DF_arr[i]['tmed'].values.reshape(-1, 1)
+        # Save it on a dictionary
+        DF = pd.DataFrame()
+        DF['mdnRnA'] = scalermdnRnA.fit_transform(mdnRnAscaled).reshape(-1)
+        DF['tmed'] = scalerT.fit_transform(Tscaled).reshape(-1)
+        DF['dates'] = DF_arr[i]['dates']
+        output[arr_str[i]] = DF
+        outputscalers[arr_str[i]+'mdnRnA'] = scalermdnRnA
+        outputscalers[arr_str[i]+'T'] = scalerT
+    return output, outputscalers
+
 def data_toCNN_format(DF_list, arr_str, fields, sample_size):
     output = {}
     for i in range(len(DF_list)):
@@ -66,10 +90,6 @@ def save_NN(model):
     
     
 def NN(neurons, nep, X_train, Y_train, X_test, Y_test, sample_size, v=0, btch_size=10, save=False):
-    from keras.models import Sequential
-    from keras.layers import Dense, Dropout, Activation, Flatten, BatchNormalization
-    from keras.layers.convolutional import Conv1D, MaxPooling1D
-    from keras.models import model_from_json
     model = Sequential()
     model.add(Conv1D(filters=neurons[0], kernel_size=3, activation='relu', input_shape=X_train.shape[1:]))
     model.add(Flatten())
@@ -103,10 +123,6 @@ def build_pdata(DF_list, DF, nlags, fields):
     return out, pdatamdnRnAlags
 
 def NN_v2(neurons, nep, X_train, Y_train, X_test, Y_test, sample_size, v=0, btch_size=10, save=False):
-    from keras.models import Sequential
-    from keras.layers import Dense, Dropout, Activation, Flatten, BatchNormalization
-    from keras.layers.convolutional import Conv1D, MaxPooling1D
-    from keras.models import model_from_json
     model = Sequential()
     model.add(Conv1D(filters=int(neurons[0]), kernel_size=3, activation='relu', input_shape=X_train.shape[1:]))
     model.add(Conv1D(filters=int(neurons[1]), kernel_size=3, activation='relu'))
@@ -123,6 +139,23 @@ def NN_v2(neurons, nep, X_train, Y_train, X_test, Y_test, sample_size, v=0, btch
     if save:
         save_NN(model)
     return history, pred, acc_train, acc_test, model
+
+def ANN_v2(neurons, nep, X_train, Y_train, X_test, Y_test, sample_size, v=0, btch_size=10, save=False):
+    model = Sequential()
+    model.add(Dense(int(neurons[0]/2), activation='sigmoid', input_shape=(X_train.shape[1:])))
+    model.add(Dropout(0.2))
+    model.add(Dense(int(neurons[1]/2), activation='relu'))
+    model.add(Flatten())
+    model.add(Dense(Y_train.shape[1], activation='linear'))
+    model.compile(loss="mae", optimizer="adam", metrics=["acc"])
+    history = model.fit(X_train, Y_train, epochs=nep, batch_size=btch_size, verbose=v, validation_data=(X_test, Y_test))
+    pred = model.predict(X_test)
+    acc_train = np.average(history.history["acc"])
+    acc_test = np.average(history.history["val_acc"])
+    if save:
+        save_NN(model)
+    return history, pred, acc_train, acc_test, model
+
 def extract_maxs_mins_avgs(M):
     diagM = [M[::-1].diagonal(i) for i in range(-M.shape[0]+1, M.shape[1])]
     mins = []
@@ -257,13 +290,35 @@ def show_errors(neurons, Xtrainlist, Y_train, Xtest_list, Y_test, arr_str, itera
         
 def show_errors_v2(neurons, Xtrainlist, Y_train, Xtest_list, Y_test, arr_str, iterations, sample_size, DF_mdnRnA):
     for i in range(len(Xtrainlist)):
-        print('\n\n#########\n', arr_str[i], '\n########\n\n')
+        #print('\n\n#########\n', arr_str[i], '\n########\n\n')
         ECM = []
         EAM = []
         for it in range(iterations):
             #print('Iteration ', it)
             history, pred, acc_train, acc_test, model = NN_v2(neurons, 90, Xtrainlist[i], Y_train, Xtest_list[i], Y_test, sample_size)
             predmaxs, predmins, predavgs = extract_maxs_mins_avgs(pred)
+            
+            Y_test_error = DF_mdnRnA['mdnRnA'][-len(predavgs):]
+            ECM.append(mean_squared_error(Y_test_error, predavgs))
+            EAM.append(mean_absolute_error(Y_test_error, predavgs))
+        print('ECM_'+arr_str[i]+' = ', ECM)
+        print('EAM_'+arr_str[i]+' = ', EAM)
+        
+def show_errors_ANNv2(neurons, nep, Xtrainlist, Y_train, Xtest_list, Y_test, arr_str, iterations, sample_size, DF_mdnRnA):
+    for i in range(len(Xtrainlist)):
+        #print('\n\n#########\n', arr_str[i], '\n########\n\n')
+        ECM = []
+        EAM = []
+        scaler = MinMaxScaler(feature_range=(-1, 1))
+        scaled = DF_mdnRnA['mdnRnA'].values.reshape(-1, 1)
+        scaled = scaler.fit_transform(scaled).reshape(-1)
+        for it in range(iterations):
+            #print('Iteration ', it)
+            history, pred, acc_train, acc_test, model = ANN_v2(neurons, nep, Xtrainlist[i], Y_train, Xtest_list[i], Y_test, sample_size)
+            predmaxs, predmins, predavgs = extract_maxs_mins_avgs(pred)
+            predmins = scaler.inverse_transform(np.array(predmins).reshape(-1, 1))[:,0]
+            predmaxs = scaler.inverse_transform(np.array(predmaxs).reshape(-1, 1))[:,0]
+            predavgs = scaler.inverse_transform(np.array(predavgs).reshape(-1, 1))[:,0]
             Y_test_error = DF_mdnRnA['mdnRnA'][-len(predavgs):]
             ECM.append(mean_squared_error(Y_test_error, predavgs))
             EAM.append(mean_absolute_error(Y_test_error, predavgs))
