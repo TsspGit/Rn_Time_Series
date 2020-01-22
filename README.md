@@ -48,6 +48,15 @@ False: doesn't save the resulting plots
 
 8. **Rn_Classify_Percentile.ipynb**, a classification example with the Radon data. We tried a classification problem between the data under the first quartile and the rest, but it went nowhere
 
+#### Boxplots
+
+Codes to plot the errors as boxplots. The only one that is really important is **ANN_MAE_Boxplots.py**, use it as example
+
+### logs
+
+1. To convert the .log to .csv files see **logToCSV.py**
+
+
 ### Codes_Monthly
 
 Follows the same logic than **Codes_Daily**, the difference is that here we access to the averages per month, and this is not useful for carry out our study.
