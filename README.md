@@ -48,9 +48,13 @@ False: doesn't save the resulting plots
 
 8. **Rn_Classify_Percentile.ipynb**, a classification example with the Radon data. We tried a classification problem between the data under the first quartile and the rest, but it went nowhere
 
+9. **Statistical_Analysis.ipynb** shows some Boxplots and statistical test applied to the mean absolute errors. 
+
+10. **utils** is used like a python module. In most of the main codes are used functions that are placed in this codes. I invite you to take a look every time you want to see what is doing,
+
 #### Boxplots
 
-Codes to plot the errors as boxplots. The only one that is really important is **ANN_MAE_Boxplots.py**, use it as example
+Codes to plot the errors as boxplots. The only one that is really important is **ANN_MAE_Boxplots.py**, use it as example.
 
 ### logs
 
