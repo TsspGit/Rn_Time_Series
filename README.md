@@ -50,7 +50,7 @@ False: doesn't save the resulting plots
 
 9. **Statistical_Analysis.ipynb** shows some Boxplots and statistical test applied to the mean absolute errors. 
 
-10. **utils** is used like a python module. In most of the main codes are used functions that are placed in this codes. I invite you to take a look every time you want to see what is doing,
+10. **utils** is used like a python module. In most of the main codes I used functions that are placed in this folder. I invite you to take a look every time you want to see what is doing,
 
 #### Boxplots
 
