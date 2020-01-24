@@ -37,8 +37,10 @@ def plot_validation(data_val, pred_val, startday_ahead):
 
     ax.plot(pd.date_range(startday_ahead, periods=len(data_val), freq='W'), data_val, color='k', linewidth=1)
     ax.plot(pd.date_range(startday_ahead, periods=len(pred_val), freq='W'), pred_val, linestyle='-.', color='dimgray', linewidth=1)
+    ax.set_ylabel(r'$^{222}$Rn ($Bq\cdot m^{-3}$)')
     plt.xlabel('Dates')
     plt.ylim([30, 140])
+    plt.grid()
     ax.legend(['Data', 'Validation'], loc='upper left')
     plt.tight_layout()
     plt.savefig('../Paper/validationwcolor.eps', dpi=200)
