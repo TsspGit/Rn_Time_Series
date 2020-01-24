@@ -36,10 +36,12 @@ def plot_validation(data_val, pred_val, startday_ahead):
     ax.xaxis.set_minor_formatter(mdates.DateFormatter("%b"))
 
     ax.plot(pd.date_range(startday_ahead, periods=len(data_val), freq='W'), data_val, color='k', linewidth=1)
-    ax.plot(pd.date_range(startday_ahead, periods=len(pred_val), freq='W'), pred_val, linestyle='-', color='g', linewidth=1)
+    ax.plot(pd.date_range(startday_ahead, periods=len(pred_val), freq='W'), pred_val, linestyle='-.', color='dimgray', linewidth=1)
     plt.xlabel('Dates')
     plt.ylim([30, 140])
     ax.legend(['Data', 'Validation'], loc='upper left')
+    plt.tight_layout()
+    plt.savefig('../Paper/validationwcolor.eps', dpi=200)
     plt.show()
 
 plot_validation(newValuesReal, predval, startdayahead)
