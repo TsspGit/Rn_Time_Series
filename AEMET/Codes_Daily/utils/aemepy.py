@@ -154,6 +154,5 @@ def Rn_Clima_subplots(DF_list, mdnRnA, dates, ycol, titles, xcol='fecha', ylabel
             ax.set_xlabel(xlabel, fontsize=18)
         ax.legend(['$^{222}$Rn'], fontsize=14, loc='upper left')
         ax2.legend([r'${}$'.format(ylabel)], fontsize=14, loc='upper right')
-        plt.tight_layout()
         if save:
                 plt.savefig('../Figures/{}_wcolor.eps'.format('_'.join(titles) + '-Rn-' + (str(v))), bbox_inches='tight')

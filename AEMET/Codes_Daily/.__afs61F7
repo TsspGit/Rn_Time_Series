@@ -150,7 +150,7 @@ arrarima_str = ['BCN_arima', 'PMP_arima', 'ZGZ_arima', 'HSC_arima']
 # Rn_Clima_subplots(DFarima_list, mdnRnA, dates, 'presmed', arr_str, ylabel=r'\bar{P}\ (hPa)', c='#2ca02c',legend=r'\bar{P}',
 #  v='Parima', save=True)
 ## Wind velocity
-plt.figure(1, figsize=(14, 10), dpi=200)
+plt.figure(33, figsize=(14, 10), dpi=200)
 Rn_Clima_subplots(DFarima_list, mdnRnA, dates, 'velmedia', arr_str, ylabel=r'\bar{V}\ (m/s)', c='dimgray',legend=r'\bar{V}',
  v='Varima', save=True)
 
