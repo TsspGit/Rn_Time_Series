@@ -15,7 +15,7 @@ CsvPath = '~/CIEMAT/Rn_Time_Series/AEMET/logs/'
 l = []
 for i in range(1, 10):
     try:
-        l.append(pd.read_csv(CsvPath + f'ErrorsLSTM{i}Fw.csv'))
+        l.append(pd.read_csv(CsvPath + f'ErrorsGRU{i}Fw.csv'))
     except:
         continue
 
@@ -36,7 +36,7 @@ def MAE_Boxplot(datalistnFw, n, label):
     colors = ['dimgray']*5
     for patch, color in zip(bplot['boxes'], colors):
         patch.set_facecolor(color)
-    fig.savefig(f'../../Figures/Boxplots/LSTM/LSTM_MAE_Boxplot_wcolor_{n}Fw_v3.eps', dpi=300)
+    fig.savefig(f'../../Figures/Boxplots/GRU/GRU_MAE_Boxplot_wcolor_{n}Fw_v3.eps', dpi=300)
 
 for nFw in range(1,9):
     MAE_Boxplot(l, nFw, lbl)
