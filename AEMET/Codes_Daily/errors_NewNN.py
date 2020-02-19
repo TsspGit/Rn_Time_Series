@@ -99,7 +99,6 @@ Xtrain_PMP, Xtest_PMP = train_test_split(Xt_PMP, test_size)
 Xtrain_HSC, Xtest_HSC = train_test_split(Xt_HSC, test_size)
 Xtrain_ZGZ, Xtest_ZGZ = train_test_split(Xt_ZGZ, test_size)
 Ytrain, Ytest = Y[:-test_size], Y[-test_size:]
-## Predict
 Xtrainlist = [Xtrain_BCN, Xtrain_PMP, Xtrain_HSC, Xtrain_ZGZ]
 Xtestlist = [Xtest_BCN, Xtest_PMP, Xtest_ZGZ, Xtest_HSC]
 neuron = [256, 128]
