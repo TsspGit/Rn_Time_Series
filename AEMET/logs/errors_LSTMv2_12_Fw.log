@@ -1,3 +1,21 @@
+2020-02-05 18:02:34.363700: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:898] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-02-05 18:02:34.364150: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: Tesla P100-SXM2-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.4805
+pciBusID: 0000:00:09.0
+totalMemory: 15.89GiB freeMemory: 14.23GiB
+2020-02-05 18:02:34.478616: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:898] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-02-05 18:02:34.479044: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 1 with properties: 
+name: Tesla P100-SXM2-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.4805
+pciBusID: 0000:00:0b.0
+totalMemory: 15.89GiB freeMemory: 13.96GiB
+2020-02-05 18:02:34.479079: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0, 1
+2020-02-05 18:02:35.004885: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-02-05 18:02:35.004924: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 1 
+2020-02-05 18:02:35.004932: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N Y 
+2020-02-05 18:02:35.004936: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 1:   Y N 
+2020-02-05 18:02:35.005480: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 13795 MB memory) -> physical GPU (device: 0, name: Tesla P100-SXM2-16GB, pci bus id: 0000:00:09.0, compute capability: 6.0)
+2020-02-05 18:02:35.222973: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:1 with 13525 MB memory) -> physical GPU (device: 1, name: Tesla P100-SXM2-16GB, pci bus id: 0000:00:0b.0, compute capability: 6.0)
+Using TensorFlow backend.
 EAMRn =  [4.547289130801246, 5.027909596761067, 4.905539340064639, 4.789959825788226, 5.039793759300595, 4.977532450358073, 4.623273104713077, 4.704922049386161, 4.637862577892485, 4.76827628726051, 4.449152519589378, 5.1528879801432295, 4.555748857770648, 4.740801820300875, 4.469364238920666, 4.9270821344284785, 4.890639350527809, 4.685334632510231, 4.571926879882812, 5.153536079043434, 4.593646930512928, 4.716819508870443, 4.594417717343285, 4.448508671351841, 4.334146772112165]
 EAM_BCN =  [4.7437591552734375, 4.904510570707775, 4.5527748834519155, 4.754176693870908, 4.703896695091611, 4.742970893496559, 4.942007773263114, 5.101724642799014, 4.599369848342169, 4.545995766775949, 5.081706092471168, 4.81097662789481, 4.6859580993652346, 4.402851758684431, 4.796024140857515, 4.617428734188988, 4.788376944405692, 4.616735440208799, 5.00142575218564, 4.631908525739397, 4.510127512613932, 4.968125225248791, 4.6217894417898995, 4.636688850039527, 4.381096649169922]
 EAM_PMP =  [4.661424437023345, 4.884260086786179, 4.770563034784226, 4.516724177769253, 4.349609810965402, 4.810020628429594, 5.009147462390718, 4.628589266822452, 4.672020103817895, 5.117110770089286, 4.827580333891369, 4.827676282610212, 4.627906436011905, 4.8428051539829795, 4.919194503057571, 4.660370054699126, 4.687637401762463, 4.308803013392857, 4.772751254127139, 4.632232411702474, 4.545297095889137, 4.901180521647135, 4.795481581914992, 4.870095498221261, 4.627342478434245]
