@@ -142,7 +142,7 @@ def NN_v2(neurons, nep, X_train, Y_train, X_test, Y_test, sample_size, v=0, btch
 
 def ANN_v2(neurons, nep, X_train, Y_train, X_test, Y_test, sample_size, v=0, btch_size=10, save=False):
     model = Sequential()
-    model.add(Dense(int(neurons[0]/2), activation='sigmoid', input_shape=(X_train.shape[1:])))
+    model.add(Dense(int(neurons[0]/2), activation='relu', input_shape=(X_train.shape[1:])))
     model.add(Dropout(0.2))
     model.add(Dense(int(neurons[1]/2), activation='relu'))
     model.add(Flatten())
@@ -160,6 +160,21 @@ def LSTM_v2(neurons, nep, X_train, Y_train, X_test, Y_test, sample_size, v=0, bt
     model = Sequential()
     model.add( Bidirectional( LSTM(neurons[0], activation='tanh', return_sequences=True), 
                              input_shape=X_train.shape[1:] ) )
+    model.add(Flatten())
+    model.add(Dense(int(neurons[1]/2), activation='linear'))
+    model.add(Dense(Y_train.shape[1], activation='linear'))
+    model.compile(loss="mae", optimizer="adam", metrics=["acc"])
+    history = model.fit(X_train, Y_train, epochs=nep, batch_size=btch_size, verbose=v, validation_data=(X_test, Y_test))
+    pred = model.predict(X_test)
+    acc_train = np.average(history.history["acc"])
+    acc_test = np.average(history.history["val_acc"])
+    if save:
+        save_NN(model)
+    return history, pred, acc_train, acc_test, model
+
+def RNN_v2(neurons, nep, X_train, Y_train, X_test, Y_test, sample_size, v=0, btch_size=10, save=False):
+    model = Sequential()
+    model.add( LSTM(neurons[0], activation='tanh', return_sequences=True, input_shape=X_train.shape[1:] ) )
     model.add(Flatten())
     model.add(Dense(int(neurons[1]/2), activation='linear'))
     model.add(Dense(Y_train.shape[1], activation='linear'))
@@ -360,6 +375,27 @@ def show_errors_LSTM(neurons, nep, Xtrainlist, Y_train, Xtest_list, Y_test, arr_
         for it in range(iterations):
             #print('Iteration ', it)
             history, pred, acc_train, acc_test, model = LSTM_v2(neurons, nep, Xtrainlist[i], Y_train, Xtest_list[i], Y_test, sample_size)
+            predmaxs, predmins, predavgs = extract_maxs_mins_avgs(pred)
+            predmins = scaler.inverse_transform(np.array(predmins).reshape(-1, 1))[:,0]
+            predmaxs = scaler.inverse_transform(np.array(predmaxs).reshape(-1, 1))[:,0]
+            predavgs = scaler.inverse_transform(np.array(predavgs).reshape(-1, 1))[:,0]
+            Y_test_error = DF_mdnRnA['mdnRnA'][-len(predavgs):]
+            ECM.append(mean_squared_error(Y_test_error, predavgs))
+            EAM.append(mean_absolute_error(Y_test_error, predavgs))
+#         print('ECM_'+arr_str[i]+' = ', ECM)
+        print('EAM_'+arr_str[i]+' = ', EAM)
+
+def show_errors_RNN(neurons, nep, Xtrainlist, Y_train, Xtest_list, Y_test, arr_str, iterations, sample_size, DF_mdnRnA):
+    for i in range(len(Xtrainlist)):
+        #print('\n\n#########\n', arr_str[i], '\n########\n\n')
+        ECM = []
+        EAM = []
+        scaler = MinMaxScaler(feature_range=(-1, 1))
+        scaled = DF_mdnRnA['mdnRnA'].values.reshape(-1, 1)
+        scaled = scaler.fit_transform(scaled).reshape(-1)
+        for it in range(iterations):
+            #print('Iteration ', it)
+            history, pred, acc_train, acc_test, model = RNN_v2(neurons, nep, Xtrainlist[i], Y_train, Xtest_list[i], Y_test, sample_size)
             predmaxs, predmins, predavgs = extract_maxs_mins_avgs(pred)
             predmins = scaler.inverse_transform(np.array(predmins).reshape(-1, 1))[:,0]
             predmaxs = scaler.inverse_transform(np.array(predmaxs).reshape(-1, 1))[:,0]
