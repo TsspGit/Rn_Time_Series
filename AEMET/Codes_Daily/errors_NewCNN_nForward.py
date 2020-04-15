@@ -52,7 +52,7 @@ Y = pdatamdnRnAlags[sample_size:]
 test_size = int(0.3*len(mdnRnA))
 X_train,X_test = X[:-test_size], X[-test_size:]
 Y_train,Y_test = Y[:-test_size], Y[-test_size:]
-neuronCNN = [128, 64]
+neuronCNN = [64, 128]
 ECM = []
 EAM = []
 for it in range(25):
@@ -89,5 +89,5 @@ Xtrain_ZGZ, Xtest_ZGZ = train_test_split(Xt_ZGZ, test_size)
 Ytrain, Ytest = Y[:-test_size], Y[-test_size:]
 Xtrainlist = [Xtrain_BCN, Xtrain_PMP, Xtrain_HSC, Xtrain_ZGZ]
 Xtestlist = [Xtest_BCN, Xtest_PMP, Xtest_ZGZ, Xtest_HSC]
-neuronCNN = [256, 128]
+neuronCNN = [128, 256]
 show_errors_v2(neuronCNN, 80, Xtrainlist, Ytrain, Xtestlist, Ytest, arr_str, iterations=25, sample_size=sample_size, DF_mdnRnA=DF)
