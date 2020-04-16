@@ -125,9 +125,9 @@ def build_pdata(DF_list, DF, nlags, fields):
 def NN_v2(neurons, nep, X_train, Y_train, X_test, Y_test, sample_size, v=0, btch_size=10, save=False):
     model = Sequential()
     model.add(Conv1D(filters=int(neurons[0]), kernel_size=3, activation='relu', input_shape=X_train.shape[1:]))
+    model.add(MaxPooling1D())
     model.add(Conv1D(filters=int(neurons[1]), kernel_size=3, activation='relu'))
     model.add(Flatten())
-    model.add(Dropout(0.2))
     model.add(Dense(int(neurons[0]/2), activation='relu'))
     model.add(Dense(int(neurons[1]/2), activation='relu'))
     model.add(Dense(Y_train.shape[1], activation='linear'))
