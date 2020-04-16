@@ -176,7 +176,7 @@ def RNN_v2(neurons, nep, X_train, Y_train, X_test, Y_test, sample_size, v=0, btc
     model = Sequential()
     model.add( LSTM(neurons[0], activation='tanh', return_sequences=True, input_shape=X_train.shape[1:] ) )
     model.add(Flatten())
-    model.add(Dense(int(neurons[1]/2), activation='linear'))
+    model.add(Dense(int(neurons[1]), activation='relu'))
     model.add(Dense(Y_train.shape[1], activation='linear'))
     model.compile(loss="mae", optimizer="adam", metrics=["acc"])
     history = model.fit(X_train, Y_train, epochs=nep, batch_size=btch_size, verbose=v, validation_data=(X_test, Y_test))
