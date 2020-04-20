@@ -19,8 +19,8 @@ mdnRnA = np.loadtxt('../../../mdnRnA.txt', delimiter=',')
 neuron = [256, 128]
 
 # Plot:
-newValuesReal = [102., 94., 103., 113.5, 73.,  81., 109., 109., 90.]
-predval = [85.61192, 100.70003, 95.34523, 77.09952, 76.952126, 79.31153, 97.461365, 91.31102, 87.3525]
+newValuesReal = [102., 94., 103., 113.5, 73.,  81., 109., 109.]
+predval = [91.77031 , 86.84759 , 70.75325 , 61.546257, 76.41941 , 88.68657, 91.441536, 86.76352]
 startdayahead = pd.to_datetime('2019-07-22 00:00:00')
 
 def plot_validation(data_val, pred_val, startday_ahead):
@@ -43,7 +43,7 @@ def plot_validation(data_val, pred_val, startday_ahead):
     plt.grid()
     ax.legend(['Data', 'Validation'], loc='upper left')
     plt.tight_layout()
-    plt.savefig('../Paper/validationwcolor.eps', dpi=200)
+    plt.savefig('../Paper/validationwcolor8Fw.eps', dpi=200)
     plt.show()
 
 plot_validation(newValuesReal, predval, startdayahead)
